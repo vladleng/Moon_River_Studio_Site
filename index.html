@@ -744,6 +744,42 @@ audio {
   border-radius: 6px;
   padding: 4px 0;
 }
+    /* === СТИЛИ ДЛЯ ХРОМ/ЯНДЕКС === */
+audio::-webkit-media-controls-timeline {
+  background: #555; /* фон полосы прогресса (тёмный) */
+  border-radius: 4px;
+  height: 4px;
+}
+
+/* Ползунок (бегунок) — делаем его светлым */
+audio::-webkit-media-controls-timeline::-webkit-slider-thumb {
+  background: #f2eee6; /* светлый цвет */
+  border-radius: 50%;
+  width: 12px;
+  height: 12px;
+}
+
+/* Текущее время и оставшееся время — делаем светлыми */
+audio::-webkit-media-controls-current-time-display,
+audio::-webkit-media-controls-time-remaining-display {
+  color: #f2eee6; /* светлый цвет текста */
+  font-weight: 500;
+  font-size: 0.8rem;
+}
+
+/* === СТИЛИ ДЛЯ FIREFOX === */
+audio::-moz-range-track {
+  background: #555;
+  border-radius: 4px;
+  height: 4px;
+}
+audio::-moz-range-thumb {
+  background: #f2eee6;
+  border: none;
+  border-radius: 50%;
+  width: 12px;
+  height: 12px;
+}
   
     
   </style>
