@@ -746,23 +746,24 @@ audio {
 }
 /* === СТИЛИ ДЛЯ ХРОМ / ЯНДЕКС === */
 audio::-webkit-media-controls-timeline {
-  background: #3a3741;   /* тёмный фон полосы */
+  background: transparent;   /* прозрачный фон полосы */
   border-radius: 4px;
   height: 4px;
 }
 
-/* Бегунок (кружок) — светлый */
+/* Сам бегунок (кружок) — светлый */
 audio::-webkit-media-controls-timeline::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  background: #f2eee6;   /* светлый цвет */
+  background: #f2eee6;   /* светлый */
   border-radius: 50%;
   width: 14px;
   height: 14px;
   cursor: pointer;
+  box-shadow: 0 0 6px rgba(0,0,0,0.3); /* небольшая тень для видимости */
 }
 
-/* Тайминг (время) — светлый */
+/* Тайминг (цифры времени) — светлый */
 audio::-webkit-media-controls-current-time-display,
 audio::-webkit-media-controls-time-remaining-display {
   color: #f2eee6;
@@ -772,7 +773,7 @@ audio::-webkit-media-controls-time-remaining-display {
 
 /* === СТИЛИ ДЛЯ FIREFOX === */
 audio::-moz-range-track {
-  background: #3a3741;
+  background: transparent;
   border-radius: 4px;
   height: 4px;
 }
