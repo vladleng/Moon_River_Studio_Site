@@ -119,11 +119,20 @@
       position: relative;
       padding: 88px 0 64px;
       overflow: hidden;
-  /* ФОНОВОЕ ИЗОБРАЖЕНИЕ */
       background-image: url('Header 01.jpg');
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(21, 20, 26, 0.5);
+      z-index: 1;
     }
     .hero-glow {
       position: absolute;
@@ -137,6 +146,7 @@
       filter: blur(60px);
       pointer-events: none;
       transition: background 0.4s ease;
+      z-index: 1;
     }
     .hero-inner {
       position: relative;
@@ -165,6 +175,8 @@
       font-size: clamp(2.2rem, 5vw, 3.4rem);
       line-height: 1.08;
       margin-bottom: 20px;
+      color: #ffffff;
+      text-shadow: 0 2px 16px rgba(0, 0, 0, 0.8);
     }
     .hero p.lede {
       color: #f0ece4;
@@ -177,7 +189,8 @@
       font-family: 'Fraunces', serif;
       font-style: italic;
       font-size: 0.98rem;
-      color: var(--text-muted);
+      color: #e8e2d8;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
       border-left: 2px solid var(--amber);
       padding-left: 14px;
       margin-bottom: 32px;
@@ -188,16 +201,7 @@
       gap: 14px;
       flex-wrap: wrap;
     }
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(21, 20, 26, 0.70); /* тёмное затемнение, 10% непрозрачности */
-      z-index: 1;
-    }
+
     .btn {
       display: inline-block;
       padding: 13px 24px;
@@ -218,10 +222,13 @@
       opacity: 0.92;
     }
     .btn-ghost {
-      border: 1px solid var(--panel-line);
-      color: var(--text);
+      background: rgba(21, 20, 26, 0.6);
+      border: 1px solid rgba(242, 238, 230, 0.5);
+      color: #f2eee6;
+      backdrop-filter: blur(4px);
     }
     .btn-ghost:hover {
+      background: rgba(242, 238, 230, 0.15);
       border-color: var(--teal);
       color: var(--teal);
     }
@@ -344,6 +351,63 @@
       border-top: 1px solid var(--panel-line);
     }
 
+    /* ---------- SERVICES (5 карточек) ---------- */
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 18px;
+    }
+    .service-card {
+      border: 1px solid var(--panel-line);
+      border-radius: 8px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+    }
+    .service-card h3 {
+      font-size: 1.05rem;
+      margin-bottom: 10px;
+    }
+    .service-card p {
+      color: var(--text-muted);
+      font-size: 0.92rem;
+      flex: 1;
+    }
+    .service-card .service-price {
+      margin-top: 16px;
+      font-weight: 600;
+      color: var(--amber);
+      font-size: 1rem;
+    }
+    .service-card .btn {
+      align-self: flex-start;
+      margin-top: 16px;
+    }
+
+    /* ---------- PRICES ---------- */
+    .price-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 18px;
+    }
+    .price-item {
+      background: var(--panel);
+      border: 1px solid var(--panel-line);
+      border-radius: 8px;
+      padding: 20px;
+      text-align: center;
+    }
+    .price-item .price {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--amber);
+      margin: 8px 0;
+    }
+    .price-item .price-desc {
+      color: var(--text-muted);
+      font-size: 0.82rem;
+    }
+
     /* ---------- PORTFOLIO ---------- */
     .track-grid {
       display: grid;
@@ -402,63 +466,6 @@
     }
     .track-link:hover {
       color: var(--tag-color, var(--amber));
-    }
-
-    /* ---------- SERVICES ---------- */
-    .service-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-      gap: 18px;
-    }
-    .service-card {
-      border: 1px solid var(--panel-line);
-      border-radius: 8px;
-      padding: 24px;
-      display: flex;
-      flex-direction: column;
-    }
-    .service-card h3 {
-      font-size: 1.05rem;
-      margin-bottom: 10px;
-    }
-    .service-card p {
-      color: var(--text-muted);
-      font-size: 0.92rem;
-      flex: 1;
-    }
-    .service-card .service-price {
-      margin-top: 16px;
-      font-weight: 600;
-      color: var(--amber);
-      font-size: 1rem;
-    }
-    .service-card .btn {
-      align-self: flex-start;
-      margin-top: 16px;
-    }
-
-    /* ---------- PRICES (отдельный блок) ---------- */
-    .price-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 18px;
-    }
-    .price-item {
-      background: var(--panel);
-      border: 1px solid var(--panel-line);
-      border-radius: 8px;
-      padding: 20px;
-      text-align: center;
-    }
-    .price-item .price {
-      font-size: 1.6rem;
-      font-weight: 700;
-      color: var(--amber);
-      margin: 8px 0;
-    }
-    .price-item .price-desc {
-      color: var(--text-muted);
-      font-size: 0.82rem;
     }
 
     /* ---------- PROCESS ---------- */
@@ -745,520 +752,539 @@
         transition: none !important;
       }
     }
-
-    
   </style>
 </head>
 <body>
 
-  <header>
-    <div class="nav">
-      <div class="logo">MOON <span>RIVER</span></div>
-      <nav class="nav-links">
-        <a href="#portfolio">Портфолио</a>
-        <a href="#services">Услуги</a>
-        <a href="#prices">Цены</a>
-        <a href="#ai-recreation">Оживление ИИ</a>
-        <a href="#testimonials">Отзывы</a>
-        <a href="#about">О студии</a>
-        <a href="#faq">FAQ</a>
-      </nav>
-      <a class="nav-cta" href="#contact">Обсудить проект</a>
-    </div>
-  </header>
+<header>
+  <div class="nav">
+    <div class="logo">MOON <span>RIVER</span></div>
+    <nav class="nav-links">
+      <a href="#portfolio">Портфолио</a>
+      <a href="#services">Услуги</a>
+      <a href="#prices">Цены</a>
+      <a href="#ai-recreation">Оживление ИИ</a>
+      <a href="#testimonials">Отзывы</a>
+      <a href="#about">О студии</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <a class="nav-cta" href="#contact">Обсудить проект</a>
+  </div>
+</header>
 
-  <section class="hero">
-    <div class="hero-glow" id="heroGlow"></div>
-    <div class="wrap hero-inner">
-      <div>
-        <div class="eyebrow">Студия аранжировки и продакшна</div>
-        <h1>Сгенерировано ИИ.<br>Звучит как живое.</h1>
-        <p class="lede">
-          Анализируем сгенерированную музыку и пересобираем её на качественных
-          инструментах или вживую — сохраняя все нюансы оригинала, но без
-          характерного «ИИ‑звучания». А ещё делаем аранжировки и пишем
-          авторскую музыку с нуля.
-        </p>
-        <p class="hero-tagline">Лунный свет превращает воду в серебро — мы делаем то же самое с треками.</p>
-        <div class="hero-ctas">
-          <a class="btn btn-primary" href="#contact">Получить живую версию трека</a>
-          <a class="btn btn-ghost" href="#portfolio">Смотреть портфолио</a>
-        </div>
-      </div>
-
-      <div class="console">
-        <div class="console-label">
-          <span class="mono">CHANNEL MIX</span>
-          <span class="mono">LIVE</span>
-        </div>
-        <div class="channels">
-          <div class="channel" style="--ch-color:var(--teal)">
-            <div class="channel-readout mono" data-readout="electronic">70%</div>
-            <div class="fader-track">
-              <input class="vertical" type="range" min="0" max="100" value="70" data-channel="electronic" style="--ch-color:var(--teal)">
-            </div>
-            <div class="channel-name">Электроника</div>
-          </div>
-          <div class="channel" style="--ch-color:var(--amber)">
-            <div class="channel-readout mono" data-readout="orchestral">55%</div>
-            <div class="fader-track">
-              <input class="vertical" type="range" min="0" max="100" value="55" data-channel="orchestral" style="--ch-color:var(--amber)">
-            </div>
-            <div class="channel-name">Оркестр</div>
-          </div>
-          <div class="channel" style="--ch-color:var(--ember)">
-            <div class="channel-readout mono" data-readout="rock">40%</div>
-            <div class="fader-track">
-              <input class="vertical" type="range" min="0" max="100" value="40" data-channel="rock" style="--ch-color:var(--ember)">
-            </div>
-            <div class="channel-name">Рок</div>
-          </div>
-          <div class="channel" style="--ch-color:var(--dusk)">
-            <div class="channel-readout mono" data-readout="pop">60%</div>
-            <div class="fader-track">
-              <input class="vertical" type="range" min="0" max="100" value="60" data-channel="pop" style="--ch-color:var(--dusk)">
-            </div>
-            <div class="channel-name">Эмбиент</div>
-          </div>
-        </div>
-        <div class="console-footer">
-          Текущий баланс: <span id="mix-summary" class="mono">—</span>
-        </div>
+<!-- 1. ГЕРОЙ -->
+<section class="hero">
+  <div class="hero-glow" id="heroGlow"></div>
+  <div class="wrap hero-inner">
+    <div>
+      <div class="eyebrow">Студия аранжировки и продакшна</div>
+      <h1>Сгенерировано ИИ.<br>Звучит как живое.</h1>
+      <p class="lede">
+        Анализируем сгенерированную музыку и пересобираем её на качественных
+        инструментах или вживую — сохраняя все нюансы оригинала, но без
+        характерного «ИИ‑звучания». А ещё делаем аранжировки и пишем
+        авторскую музыку с нуля.
+      </p>
+      <p class="hero-tagline">Лунный свет превращает воду в серебро — мы делаем то же самое с треками.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-primary" href="#contact">Получить живую версию трека</a>
+        <a class="btn btn-ghost" href="#portfolio">Смотреть портфолио</a>
       </div>
     </div>
-  </section>
-
-  <hr class="hr">
-
-  <section id="why">
-    <div class="wrap">
-      <div class="section-head">
-        <div class="eyebrow">Почему это важно</div>
-        <h2>Почему ИИ‑треки не работают сами по себе</h2>
-        <p>ИИ создаёт основу, но без живого звука музыка остаётся «пластиковой» и не цепляет слушателя.</p>
+    <div class="console">
+      <div class="console-label">
+        <span class="mono">CHANNEL MIX</span>
+        <span class="mono">LIVE</span>
       </div>
-      <div class="problem-solution-grid">
-        <div class="ps-card problem">
-          <h3>Что не так с ИИ‑треком</h3>
-          <ul class="ps-list">
-            <li><span class="ps-mark">✕</span><span>Синтетический, «пластиковый» звук без живого характера</span></li>
-            <li><span class="ps-mark">✕</span><span>Артефакты и неестественные переходы в аранжировке</span></li>
-            <li><span class="ps-mark">✕</span><span>Не проходит модерацию стриминговых площадок и лейблов</span></li>
-            <li><span class="ps-mark">✕</span><span>Нет эмоции и глубины — слушатель не «зацепится»</span></li>
-            <li><span class="ps-mark">✕</span><span>Одинаковое звучание у всех, нет уникальности</span></li>
-          </ul>
+      <div class="channels">
+        <div class="channel" style="--ch-color:var(--teal)">
+          <div class="channel-readout mono" data-readout="electronic">70%</div>
+          <div class="fader-track">
+            <input class="vertical" type="range" min="0" max="100" value="70" data-channel="electronic" style="--ch-color:var(--teal)">
+          </div>
+          <div class="channel-name">Электроника</div>
         </div>
-        <div class="ps-card solution">
-          <h3>Что делает Moon River</h3>
-          <ul class="ps-list">
-            <li><span class="ps-mark">✓</span><span>Перебиваем инструменты живым звуком: гитара, бас, клавиши, духовые</span></li>
-            <li><span class="ps-mark">✓</span><span>Полная аранжировка и редактирование под ваш жанр</span></li>
-            <li><span class="ps-mark">✓</span><span>Студийный микс и мастеринг, готовый для стриминга</span></li>
-            <li><span class="ps-mark">✓</span><span>Живые партии и деталировка звука вместо ИИ‑шаблона</span></li>
-            <li><span class="ps-mark">✓</span><span>Уникальное звучание, которое выделяет вас среди остальных</span></li>
-          </ul>
+        <div class="channel" style="--ch-color:var(--amber)">
+          <div class="channel-readout mono" data-readout="orchestral">55%</div>
+          <div class="fader-track">
+            <input class="vertical" type="range" min="0" max="100" value="55" data-channel="orchestral" style="--ch-color:var(--amber)">
+          </div>
+          <div class="channel-name">Оркестр</div>
+        </div>
+        <div class="channel" style="--ch-color:var(--ember)">
+          <div class="channel-readout mono" data-readout="rock">40%</div>
+          <div class="fader-track">
+            <input class="vertical" type="range" min="0" max="100" value="40" data-channel="rock" style="--ch-color:var(--ember)">
+          </div>
+          <div class="channel-name">Рок</div>
+        </div>
+        <div class="channel" style="--ch-color:var(--dusk)">
+          <div class="channel-readout mono" data-readout="ambient">60%</div>
+          <div class="fader-track">
+            <input class="vertical" type="range" min="0" max="100" value="60" data-channel="ambient" style="--ch-color:var(--dusk)">
+          </div>
+          <div class="channel-name">Эмбиент</div>
+        </div>
+      </div>
+      <div class="console-footer">
+        Текущий баланс: <span id="mix-summary" class="mono">—</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="hr">
+
+<!-- 2. ПОЧЕМУ ИИ НЕ РАБОТАЮТ -->
+<section id="why">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Почему это важно</div>
+      <h2>Почему ИИ‑треки не работают сами по себе</h2>
+      <p>ИИ создаёт основу, но без живого звука музыка остаётся «пластиковой» и не цепляет слушателя.</p>
+    </div>
+    <div class="problem-solution-grid">
+      <div class="ps-card problem">
+        <h3>Что не так с ИИ‑треком</h3>
+        <ul class="ps-list">
+          <li><span class="ps-mark">✕</span><span>Синтетический, «пластиковый» звук без живого характера</span></li>
+          <li><span class="ps-mark">✕</span><span>Артефакты и неестественные переходы в аранжировке</span></li>
+          <li><span class="ps-mark">✕</span><span>Не проходит модерацию стриминговых площадок и лейблов</span></li>
+          <li><span class="ps-mark">✕</span><span>Нет эмоции и глубины — слушатель не «зацепится»</span></li>
+          <li><span class="ps-mark">✕</span><span>Одинаковое звучание у всех, нет уникальности</span></li>
+        </ul>
+      </div>
+      <div class="ps-card solution">
+        <h3>Что делает Moon River</h3>
+        <ul class="ps-list">
+          <li><span class="ps-mark">✓</span><span>Перебиваем инструменты живым звуком: гитара, бас, клавиши, духовые</span></li>
+          <li><span class="ps-mark">✓</span><span>Полная аранжировка и редактирование под ваш жанр</span></li>
+          <li><span class="ps-mark">✓</span><span>Студийный микс и мастеринг, готовый для стриминга</span></li>
+          <li><span class="ps-mark">✓</span><span>Живые партии и деталировка звука вместо ИИ‑шаблона</span></li>
+          <li><span class="ps-mark">✓</span><span>Уникальное звучание, которое выделяет вас среди остальных</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="hr">
+
+<!-- 3. ОЖИВЛЕНИЕ ИИ (ai-recreation) -->
+<section id="ai-recreation">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Оживление ИИ‑музыки</div>
+      <h2>Как мы выводим треки на свет</h2>
+      <p>ИИ‑генератор хорошо даёт идею, но не всегда — нужное звучание. Мы разбираем трек на составляющие и пересобираем его так, чтобы не потерять ни одной детали оригинала.</p>
+    </div>
+    <div class="process-list">
+      <div class="process-step">
+        <span class="num">01</span>
+        <h3>Анализ</h3>
+        <p>Разбираем сгенерированный трек на партии — ритм, мелодию, гармонию, текстуру — и фиксируем нюансы оригинала, которые важно сохранить.</p>
+      </div>
+      <div class="process-step">
+        <span class="num">02</span>
+        <h3>Подбор инструментов</h3>
+        <p>Выбираем качественные виртуальные или живые инструменты под каждую партию, ориентируясь на фразировку, динамику и характер оригинала.</p>
+      </div>
+      <div class="process-step">
+        <span class="num">03</span>
+        <h3>Пересборка</h3>
+        <p>Записываем или программируем партии заново, сохраняя структуру и нюансы трека, но убирая характерное «ИИ‑звучание».</p>
+      </div>
+    </div>
+    <div style="margin-top: 28px; background: var(--panel); border-radius: 8px; padding: 20px; border: 1px solid var(--panel-line);">
+      <p style="color: var(--text-muted);"><strong style="color: var(--text);">Примеры «до / после»:</strong> мы подготовили аудио‑фрагменты, чтобы вы могли услышать разницу. Запросите их в форме — и мы пришлём ссылку на прослушивание.</p>
+      <a class="btn btn-primary" href="#contact" style="margin-top: 12px;">Запросить примеры</a>
+    </div>
+  </div>
+</section>
+
+<hr class="hr">
+
+<!-- 4. УСЛУГИ (5 карточек) -->
+<section id="services">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Услуги</div>
+      <h2>Пять направлений студии</h2>
+      <p>Мы закрываем полный цикл работы с музыкой — от идеи до финального мастера.</p>
+    </div>
+    <div class="service-grid">
+      <div class="service-card">
+        <h3>Аранжировка авторской музыки</h3>
+        <p>Берём вашу идею, мелодию или демо и доводим до полноценной аранжировки — с инструментами, структурой и динамикой.</p>
+        <div class="service-price">от 15 000 ₽</div>
+        <a class="btn btn-primary" href="#contact">Заказать аранжировку</a>
+      </div>
+      <div class="service-card" style="border-color:var(--teal);">
+        <h3>Оживление ИИ‑музыки</h3>
+        <p>Анализируем сгенерированный трек и пересобираем его на качественных инструментах или вживую — сохраняя нюансы оригинала.</p>
+        <div class="service-price">от 10 000 ₽</div>
+        <a class="btn btn-success" href="#ai-recreation">Подробнее</a>
+      </div>
+      <div class="service-card">
+        <h3>Авторская музыка на заказ</h3>
+        <p>Пишем оригинальную музыку с нуля под конкретную задачу — личный трек, видео, игра или особый случай.</p>
+        <div class="service-price">от 20 000 ₽</div>
+        <a class="btn btn-primary" href="#contact">Написать музыку</a>
+      </div>
+      <div class="service-card" style="border-color:var(--ember);">
+        <h3>Запись и тюнинг вокала</h3>
+        <p>Профессиональная запись вокала, автотюн, выравнивание, гармонии. Работаем с солистами и группами.</p>
+        <div class="service-price">от 5 000 ₽ <span style="font-weight:400;font-size:0.8rem;color:var(--text-muted);">(+1000 за каждого доп. человека)</span></div>
+        <a class="btn btn-primary" href="#contact">Записать вокал</a>
+      </div>
+      <div class="service-card" style="border-color:var(--dusk);">
+        <h3>Сведение и мастеринг</h3>
+        <p>Доводим трек до коммерческого качества: баланс, частоты, динамика, громкость по стандартам стримингов.</p>
+        <div class="service-price">от 5 000 ₽</div>
+        <a class="btn btn-primary" href="#contact">Свести трек</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="hr">
+
+<!-- 5. ПОРТФОЛИО -->
+<section id="portfolio">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Портфолио</div>
+      <h2>Несколько треков, которые уже доплыли до релиза</h2>
+      <p>Жанры разные — подход к каждому проекту один: услышать, что нужно автору, и собрать это в трек.</p>
+    </div>
+    <div class="track-grid">
+      <div class="track-card" style="--tag-color:var(--teal)">
+        <div class="track-top">
+          <div class="track-title">Луна</div>
+          <div class="track-duration mono">3:24</div>
+        </div>
+        <div class="tag-row">
+          <span class="tag" style="--tag-color:var(--teal)">Инди</span>
+          <span class="tag client">Оживлено из ИИ</span>
+        </div>
+        <audio controls style="width:100%; margin-top:8px; border-radius:4px;">
+          <source src="audio/luna.mp3" type="audio/mpeg">
+        </audio>
+      </div>
+      <div class="track-card" style="--tag-color:var(--teal)">
+        <div class="track-top">
+          <div class="track-title">Бумажки</div>
+          <div class="track-duration mono">2:51</div>
+        </div>
+        <div class="tag-row">
+          <span class="tag" style="--tag-color:var(--teal)">Инди</span>
+          <span class="tag client" style="--tag-color:var(--teal)">Оживлено из ИИ</span>
+        </div>
+        <audio controls style="width:100%; margin-top:8px; border-radius:4px;">
+          <source src="audio/bumazhki.mp3" type="audio/mpeg">
+        </audio>
+      </div>
+      <div class="track-card" style="--tag-color:var(--ember)">
+        <div class="track-top">
+          <div class="track-title">Крылья из стали</div>
+          <div class="track-duration mono">4:02</div>
+        </div>
+        <div class="tag-row">
+          <span class="tag" style="--tag-color:var(--ember)">Рок</span>
+          <span class="tag client">Личный проект</span>
+        </div>
+        <a class="track-link" href="#" style="--tag-color:var(--ember)">Слушать →</a>
+      </div>
+      <div class="track-card" style="--tag-color:var(--dusk)">
+        <div class="track-top">
+          <div class="track-title">Туманный берег</div>
+          <div class="track-duration mono">3:47</div>
+        </div>
+        <div class="tag-row">
+          <span class="tag" style="--tag-color:var(--dusk)">Эмбиент</span>
+          <span class="tag client" style="--tag-color:var(--dusk)">Оживлено из ИИ</span>
+        </div>
+        <a class="track-link" href="#" style="--tag-color:var(--dusk)">Слушать →</a>
+      </div>
+      <div class="track-card" style="--tag-color:var(--teal)">
+        <div class="track-top">
+          <div class="track-title">Городские огни</div>
+          <div class="track-duration mono">3:10</div>
+        </div>
+        <div class="tag-row">
+          <span class="tag" style="--tag-color:var(--teal)">Поп</span>
+          <span class="tag client">Николай Барабинский</span>
+        </div>
+        <a class="track-link" href="#" style="--tag-color:var(--teal)">Слушать →</a>
+      </div>
+      <div class="track-card" style="--tag-color:var(--amber)">
+        <div class="track-top">
+          <div class="track-title">Последний вальс</div>
+          <div class="track-duration mono">2:38</div>
+        </div>
+        <div class="tag-row">
+          <span class="tag" style="--tag-color:var(--amber)">Мероприятие</span>
+          <span class="tag client">Личный проект</span>
+        </div>
+        <a class="track-link" href="#" style="--tag-color:var(--amber)">Слушать →</a>
+      </div>
+    </div>
+    <div style="margin-top: 28px; text-align: center;">
+      <a class="btn btn-primary" href="#contact">Заказать свой трек</a>
+    </div>
+  </div>
+</section>
+
+<hr class="hr">
+
+<!-- 6. ПРОЦЕСС -->
+<section id="process">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Процесс</div>
+      <h2>Как трек доходит до финала</h2>
+    </div>
+    <div class="process-list">
+      <div class="process-step">
+        <span class="num">01</span>
+        <h3>Бриф</h3>
+        <p>Обсуждаем задачу: жанр, настроение, референсы, сроки и где будет использоваться музыка.</p>
+      </div>
+      <div class="process-step">
+        <span class="num">02</span>
+        <h3>Демо</h3>
+        <p>Присылаем набросок основной идеи — до того, как двигаться дальше, чтобы синхронизироваться по направлению.</p>
+      </div>
+      <div class="process-step">
+        <span class="num">03</span>
+        <h3>Финал</h3>
+        <p>Дорабатываем по правкам и передаём готовый трек в нужном формате.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="hr">
+
+<!-- 7. ЦЕНЫ -->
+<section id="prices">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Ориентировочные цены</div>
+      <h2>Прозрачный прайс</h2>
+      <p>Окончательная стоимость зависит от объёма работы, но вы уже сейчас можете прикинуть бюджет.</p>
+    </div>
+    <div class="price-grid">
+      <div class="price-item">
+        <h3>Аранжировка</h3>
+        <div class="price">15 000 ₽</div>
+        <div class="price-desc">под ключ, с правками</div>
+      </div>
+      <div class="price-item">
+        <h3>Оживление ИИ</h3>
+        <div class="price">10 000 ₽</div>
+        <div class="price-desc">пересборка + микс</div>
+      </div>
+      <div class="price-item">
+        <h3>Авторский трек</h3>
+        <div class="price">20 000 ₽</div>
+        <div class="price-desc">уникальная музыка с нуля</div>
+      </div>
+      <div class="price-item">
+        <h3>Вокал (запись + тюнинг)</h3>
+        <div class="price">от 5 000 ₽</div>
+        <div class="price-desc">+1000 за каждого доп. человека</div>
+      </div>
+      <div class="price-item">
+        <h3>Сведение / Мастеринг</h3>
+        <div class="price">от 5 000 ₽</div>
+        <div class="price-desc">за готовый микс</div>
+      </div>
+    </div>
+    <p style="color:var(--text-muted); margin-top:20px; text-align:center; font-size:0.9rem;">
+      * Все цены указаны за стандартный трек длительностью до 4 минут. Для точного расчёта свяжитесь с нами.
+    </p>
+  </div>
+</section>
+
+<hr class="hr">
+
+<!-- 8. О СТУДИИ -->
+<section id="about">
+  <div class="wrap about-inner">
+    <div>
+      <div class="eyebrow">О студии</div>
+      <h2 style="margin-bottom:20px;">Команда, которая живёт звуком</h2>
+      <p>Moon River основана в 2023 году музыкантом, продюсером и аранжировщиком <strong>Владиславом Падериным</strong> и <strong>Евгенией Марковой</strong>. За плечами более 15‑ти лет совместного опыта в продакшне, участие в записи множества релизов для инди‑артистов и брендов.</p>
+      <p>Мы работаем в собственной студии с акустическим контролем, используем топовые библиотеки звуков и сами являемся профессиональными музыкантами (гитара, бас, клавиши, вокал и т.д.).</p>
+      <p>Наш подход — не навязывать свой стиль, а найти тот звук, который нужен именно вашему проекту.</p>
+    </div>
+    <div class="about-stats">
+      <div class="stat">
+        <span class="n">15+</span>
+        <span class="l">лет совокупного опыта</span>
+      </div>
+      <div class="stat">
+        <span class="n">70+</span>
+        <span class="l">завершённых проектов</span>
+      </div>
+      <div class="stat">
+        <span class="n">1ч</span>
+        <span class="l">средний ответ по брифу</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="hr">
+
+<!-- 9. ОТЗЫВЫ -->
+<section id="testimonials">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Отзывы</div>
+      <h2>Голоса с другого берега</h2>
+      <p>Несколько слов от тех, с кем мы уже работали.</p>
+    </div>
+    <div class="testimonial-grid">
+      <div class="testimonial-card">
+        <p class="testimonial-quote">«Не ожидал, что черновик из нейросети можно довести до такого живого звучания — слушатели не верят, что там был ИИ. Трек набрал 10K прослушиваний за первую неделю.»</p>
+        <div class="testimonial-person">
+          <div class="avatar" style="background:var(--amber);">АК</div>
+          <div>
+            <div class="person-name">Артём К.</div>
+            <div class="person-role">Оживление ИИ‑трека</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <p class="testimonial-quote">«Прислала голосовую заметку с мелодией и получила аранжировку, которая прозвучала лучше, чем я представляла. Владислав понял меня с полуслова.»</p>
+        <div class="testimonial-person">
+          <div class="avatar" style="background:var(--teal);">МС</div>
+          <div>
+            <div class="person-name">Мария С.</div>
+            <div class="person-role">Аранжировка авторской музыки</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <p class="testimonial-quote">«Написали трек точно под тайминг ролика, с первого раза без правок по структуре. Клиент был в восторге, проект сдали досрочно.»</p>
+        <div class="testimonial-person">
+          <div class="avatar" style="background:var(--ember);">ДР</div>
+          <div>
+            <div class="person-name">Денис Р.</div>
+            <div class="person-role">Музыка на заказ для видео</div>
+          </div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <hr class="hr">
+<hr class="hr">
 
-  <section id="portfolio">
-    <div class="wrap">
-      <div class="section-head">
-        <div class="eyebrow">Портфолио</div>
-        <h2>Несколько треков, которые уже доплыли до релиза</h2>
-        <p>Жанры разные — подход к каждому проекту один: услышать, что нужно автору, и собрать это в трек.</p>
-      </div>
-
-      <div class="track-grid">
-        <div class="track-card" style="--tag-color:var(--teal)">
-          <div class="track-top">
-            <div class="track-title">Луна</div>
-            <div class="track-duration mono">3:24</div>
-          </div>
-          <div class="tag-row">
-            <span class="tag" style="--tag-color:var(--teal)">Инди</span>
-            <span class="tag client">Оживлено из ИИ</span>
-          </div>
-          <audio controls style="width:100%; margin-top:8px; border-radius:4px;">
-            <source src="audio/luna.mp3" type="audio/mpeg">
-          </audio>
-        </div>
-
-        <div class="track-card" style="--tag-color:var(--teal)">
-          <div class="track-top">
-            <div class="track-title">Бумажки</div>
-            <div class="track-duration mono">2:51</div>
-          </div>
-          <div class="tag-row">
-            <span class="tag" style="--tag-color:var(--teal)">Инди</span>
-            <span class="tag client" style="--tag-color:var(--teal)">Оживлено из ИИ</span>
-          </div>
-          <audio controls style="width:100%; margin-top:8px; border-radius:4px;">
-            <source src="audio/Bumazhki.mp3" type="audio/mpeg">
-          </audio>
-        </div>
-
-        <div class="track-card" style="--tag-color:var(--ember)">
-          <div class="track-top">
-            <div class="track-title">Крылья из стали</div>
-            <div class="track-duration mono">4:02</div>
-          </div>
-          <div class="tag-row">
-            <span class="tag" style="--tag-color:var(--ember)">Рок</span>
-            <span class="tag client">Личный проект</span>
-          </div>
-          <a class="track-link" href="#" style="--tag-color:var(--ember)">Слушать →</a>
-        </div>
-
-        <div class="track-card" style="--tag-color:var(--dusk)">
-          <div class="track-top">
-            <div class="track-title">Туманный берег</div>
-            <div class="track-duration mono">3:47</div>
-          </div>
-          <div class="tag-row">
-            <span class="tag" style="--tag-color:var(--dusk)">Эмбиент</span>
-            <span class="tag client" style="--tag-color:var(--dusk)">Оживлено из ИИ</span>
-          </div>
-          <a class="track-link" href="#" style="--tag-color:var(--dusk)">Слушать →</a>
-        </div>
-
-        <div class="track-card" style="--tag-color:var(--teal)">
-          <div class="track-top">
-            <div class="track-title">Городские огни</div>
-            <div class="track-duration mono">3:10</div>
-          </div>
-          <div class="tag-row">
-            <span class="tag" style="--tag-color:var(--teal)">Поп</span>
-            <span class="tag client">Николай Барабинский</span>
-          </div>
-          <a class="track-link" href="#" style="--tag-color:var(--teal)">Слушать →</a>
-        </div>
-
-        <div class="track-card" style="--tag-color:var(--amber)">
-          <div class="track-top">
-            <div class="track-title">Последний вальс</div>
-            <div class="track-duration mono">2:38</div>
-          </div>
-          <div class="tag-row">
-            <span class="tag" style="--tag-color:var(--amber)">Мероприятие</span>
-            <span class="tag client">Личный проект</span>
-          </div>
-          <a class="track-link" href="#" style="--tag-color:var(--amber)">Слушать →</a>
-        </div>
-      </div>
-
-      <div style="margin-top: 28px; text-align: center;">
-        <a class="btn btn-primary" href="#contact">Заказать свой трек</a>
-      </div>
+<!-- 10. FAQ -->
+<section id="faq">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Вопросы и ответы</div>
+      <h2>Часто задаваемые вопросы</h2>
     </div>
-  </section>
-
-  <hr class="hr">
-
-  <section id="services">
-    <div class="wrap">
-      <div class="section-head">
-        <div class="eyebrow">Услуги</div>
-        <h2>Три течения студии</h2>
-        <p>Стоимость и сроки обсуждаются индивидуально, но ниже вы найдёте ориентировочные цены.</p>
-      </div>
-      <div class="service-grid">
-        <div class="service-card">
-          <h3>Аранжировка авторской музыки</h3>
-          <p>Берём вашу идею, мелодию или демо и доводим до полноценной аранжировки — с инструментами, структурой и динамикой.</p>
-          <div class="service-price">от 15 000 ₽</div>
-          <a class="btn btn-primary" href="#contact">Заказать аранжировку</a>
-        </div>
-        <div class="service-card" style="border-color:var(--teal);">
-          <h3>Оживление ИИ‑музыки</h3>
-          <p>Анализируем сгенерированный трек и пересобираем его на качественных инструментах или вживую — сохраняя нюансы оригинала, в высоком качестве звучания.</p>
-          <div class="service-price">от 10 000 ₽</div>
-          <a class="btn btn-success" href="#ai-recreation">Подробнее</a>
-        </div>
-        <div class="service-card">
-          <h3>Авторская музыка на заказ</h3>
-          <p>Пишем оригинальную музыку с нуля под конкретную задачу — личный трек, видео, игра или особый случай вроде свадьбы.</p>
-          <div class="service-price">от 25 000 ₽</div>
-          <a class="btn btn-primary" href="#contact">Написать музыку</a>
-        </div>
-      </div>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary>Какие форматы вы принимаете для работы?</summary>
+        <p>Мы работаем с любыми аудиоформатами (WAV, MP3, AIFF) и MIDI‑файлами. Если у вас есть только идея — пришлите голосовую заметку или описание, мы поможем.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Сколько времени занимает оживление ИИ‑трека?</summary>
+        <p>Обычно от 3 до 7 дней в зависимости от сложности. Срочные заказы (до 48 часов) обсуждаются отдельно.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Можно ли вносить правки после получения финальной версии?</summary>
+        <p>Да, мы предусматриваем до 2‑х итераций правок в рамках стоимости. Дополнительные правки — по договорённости.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Гарантируете ли вы, что трек пройдёт модерацию стримингов?</summary>
+        <p>Да, мы делаем микс и мастеринг по стандартам площадок (‑14 LUFS, правильный True Peak). Если проблема возникнет — доработаем бесплатно.</p>
+      </details>
     </div>
-  </section>
+  </div>
+</section>
 
-  <hr class="hr">
+<hr class="hr">
 
-  <section id="prices">
-    <div class="wrap">
-      <div class="section-head">
-        <div class="eyebrow">Ориентировочные цены</div>
-        <h2>Прозрачный прайс</h2>
-        <p>Окончательная стоимость зависит от объёма работы, но вы уже сейчас можете прикинуть бюджет.</p>
+<!-- 11. КОНТАКТЫ -->
+<section id="contact">
+  <div class="wrap contact-inner">
+    <div>
+      <div class="eyebrow">Контакты</div>
+      <h2 style="margin-bottom:16px;">Обсудим проект</h2>
+      <form id="contactForm" action="https://formsubmit.co/vladislavpaderin@gmail.com" method="POST">
+        <input type="hidden" name="_subject" value="Новая заявка с сайта Moon River">
+        <input type="hidden" name="_captcha" value="false">
+        <div class="field">
+          <label for="name">Имя</label>
+          <input id="name" name="name" type="text" required>
+        </div>
+        <div class="field">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" required>
+        </div>
+        <div class="field">
+          <label for="project-type">Тип проекта</label>
+          <select id="project-type" name="project-type">
+            <option>Аранжировка трека</option>
+            <option>Оживление ИИ‑трека</option>
+            <option>Музыка для видео или игры</option>
+            <option>Музыка для мероприятия</option>
+            <option>Сведение и мастеринг</option>
+            <option>Запись вокала</option>
+            <option>Другое</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="track-link">Ссылка на исходный трек (если есть)</label>
+          <input id="track-link" name="track-link" type="url" placeholder="https://...">
+        </div>
+        <div class="field">
+          <label for="message">Расскажите о проекте</label>
+          <textarea id="message" name="message" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Отправить заявку</button>
+        <div id="form-success">✅ Заявка отправлена — я отвечу в течение дня.</div>
+        <p class="form-note">Форма отправляется через Formsubmit — все заявки приходят на почту.</p>
+      </form>
+    </div>
+    <div class="contact-info">
+      <p>Если удобнее написать напрямую — вот другие каналы связи.</p>
+      <div class="contact-links">
+        <a href="mailto:vladislavpaderin@gmail.com">vladislavpaderin@gmail.com</a>
+        <a href="https://vk.com/moonriver_studio?z=audio_playlist-64552773_1_83d428bccd561b6284" target="_blank">Вконтакте / портфолио →</a>
+        <a href="https://vk.com/gim64552773" target="_blank">Вконтакте / чат →</a>
+        <a href="https://t.me/MoonRiverMusic" target="_blank">Telegram →</a>
       </div>
-      <div class="price-grid">
-        <div class="price-item">
-          <h3>Аранжировка</h3>
-          <div class="price">15 000 ₽</div>
-          <div class="price-desc">под ключ, с правками</div>
-        </div>
-        <div class="price-item">
-          <h3>Оживление ИИ</h3>
-          <div class="price">10 000 ₽</div>
-          <div class="price-desc">пересборка + микс</div>
-        </div>
-        <div class="price-item">
-          <h3>Авторский трек</h3>
-          <div class="price">25 000 ₽</div>
-          <div class="price-desc">уникальная музыка с нуля</div>
-        </div>
-        <div class="price-item">
-          <h3>Сведение / Мастеринг</h3>
-          <div class="price">7 000 ₽</div>
-          <div class="price-desc">за готовый микс</div>
-        </div>
-      </div>
-      <p style="color:var(--text-muted); margin-top:20px; text-align:center; font-size:0.9rem;">
-        * Все цены указаны за стандартный трек длительностью до 4 минут. Для точного расчёта свяжитесь с нами.
+      <p style="margin-top: 24px; font-size:0.9rem; color:var(--text-muted);">
+        Или позвоните: <strong style="color:var(--text);">+7 (995) 081‑02‑06</strong>
       </p>
     </div>
-  </section>
+  </div>
+</section>
 
-  <hr class="hr">
+<footer>
+  <div class="wrap" style="display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; width:100%;">
+    <span>© 2026 Moon River</span>
+    <span>Студия аранжировки и продакшна</span>
+  </div>
+</footer>
 
-  <section id="ai-recreation">
-    <div class="wrap">
-      <div class="section-head">
-        <div class="eyebrow">Оживление ИИ‑музыки</div>
-        <h2>Как мы выводим треки на свет</h2>
-        <p>ИИ‑генератор хорошо даёт идею, но не всегда — нужное звучание. Мы разбираем трек на составляющие и пересобираем его так, чтобы не потерять ни одной детали оригинала.</p>
-      </div>
-      <div class="process-list">
-        <div class="process-step">
-          <span class="num">01</span>
-          <h3>Анализ</h3>
-          <p>Разбираем сгенерированный трек на партии — ритм, мелодию, гармонию, текстуру — и фиксируем нюансы оригинала, которые важно сохранить.</p>
-        </div>
-        <div class="process-step">
-          <span class="num">02</span>
-          <h3>Подбор инструментов</h3>
-          <p>Выбираем качественные виртуальные или живые инструменты под каждую партию, ориентируясь на фразировку, динамику и характер оригинала.</p>
-        </div>
-        <div class="process-step">
-          <span class="num">03</span>
-          <h3>Пересборка</h3>
-          <p>Записываем или программируем партии заново, сохраняя структуру и нюансы трека, но убирая характерное «ИИ‑звучание».</p>
-        </div>
-      </div>
-      <div style="margin-top: 28px; background: var(--panel); border-radius: 8px; padding: 20px; border: 1px solid var(--panel-line);">
-        <p style="color: var(--text-muted);"><strong style="color: var(--text);">Примеры «до / после»:</strong> мы подготовили аудио‑фрагменты, чтобы вы могли услышать разницу. Запросите их в форме — и мы пришлём ссылку на прослушивание.</p>
-        <a class="btn btn-primary" href="#contact" style="margin-top: 12px;">Запросить примеры</a>
-      </div>
-    </div>
-  </section>
-
-  <hr class="hr">
-
-  <section id="process">
-    <div class="wrap">
-      <div class="section-head">
-        <div class="eyebrow">Процесс</div>
-        <h2>Как трек доходит до финала</h2>
-      </div>
-      <div class="process-list">
-        <div class="process-step">
-          <span class="num">01</span>
-          <h3>Бриф</h3>
-          <p>Обсуждаем задачу: жанр, настроение, референсы, сроки и где будет использоваться музыка.</p>
-        </div>
-        <div class="process-step">
-          <span class="num">02</span>
-          <h3>Демо</h3>
-          <p>Присылаем набросок основной идеи — до того, как двигаться дальше, чтобы синхронизироваться по направлению.</p>
-        </div>
-        <div class="process-step">
-          <span class="num">03</span>
-          <h3>Финал</h3>
-          <p>Дорабатываем по правкам и передаём готовый трек в нужном формате.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <hr class="hr">
-
-  <section id="about">
-    <div class="wrap about-inner">
-      <div>
-        <div class="eyebrow">О студии</div>
-        <h2 style="margin-bottom:20px;">Команда, которая живёт звуком</h2>
-        <p>Moon River основана в 2023 году музыкантом, продюсером и аранжировщиком <strong>Владиславом Падериным</strong> и <strong>Евгенией Марковой</strong>. За плечами более 15-ти лет работы в продакшне, участие в записи множества релизов для инди‑артистов и брендов.</p>
-        <p>Мы работаем в собственной студии с акустическим контролем, используем топовые библиотеки звуков и сами являемся профессиональными музыкантами (гитара, бас, клавиши, вокал и тд).</p>
-        <p>Наш подход — не навязывать свой стиль, а найти тот звук, который нужен именно вашему проекту.</p>
-      </div>
-      <div class="about-stats">
-        <div class="stat">
-          <span class="n">15+</span>
-          <span class="l">лет на рынке</span>
-        </div>
-        <div class="stat">
-          <span class="n">70+</span>
-          <span class="l">завершённых проектов</span>
-        </div>
-        <div class="stat">
-          <span class="n">1ч</span>
-          <span class="l">средний ответ по брифу</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <hr class="hr">
-
-  <section id="testimonials">
-    <div class="wrap">
-      <div class="section-head">
-        <div class="eyebrow">Отзывы</div>
-        <h2>Голоса с другого берега</h2>
-        <p>Несколько слов от тех, с кем мы уже работали.</p>
-      </div>
-      <div class="testimonial-grid">
-        <div class="testimonial-card">
-          <p class="testimonial-quote">«Не ожидал, что черновик из нейросети можно довести до такого живого звучания — слушатели не верят, что там был ИИ. Трек набрал 10K прослушиваний за первую неделю.»</p>
-          <div class="testimonial-person">
-            <div class="avatar" style="background:var(--amber);">АК</div>
-            <div>
-              <div class="person-name">Артём К.</div>
-              <div class="person-role">Оживление ИИ‑трека</div>
-            </div>
-          </div>
-        </div>
-        <div class="testimonial-card">
-          <p class="testimonial-quote">«Прислала голосовую заметку с мелодией и получила аранжировку, которая прозвучала лучше, чем я представляла. Александра понял меня с полуслова.»</p>
-          <div class="testimonial-person">
-            <div class="avatar" style="background:var(--teal);">МС</div>
-            <div>
-              <div class="person-name">Мария С.</div>
-              <div class="person-role">Аранжировка авторской музыки</div>
-            </div>
-          </div>
-        </div>
-        <div class="testimonial-card">
-          <p class="testimonial-quote">«Написали трек точно под тайминг ролика, с первого раза без правок по структуре. Клиент был в восторге, проект сдали досрочно.»</p>
-          <div class="testimonial-person">
-            <div class="avatar" style="background:var(--ember);">ДР</div>
-            <div>
-              <div class="person-name">Денис Р.</div>
-              <div class="person-role">Музыка на заказ для видео</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <hr class="hr">
-
-  <section id="faq">
-    <div class="wrap">
-      <div class="section-head">
-        <div class="eyebrow">Вопросы и ответы</div>
-        <h2>Часто задаваемые вопросы</h2>
-      </div>
-      <div class="faq-list">
-        <details class="faq-item">
-          <summary>Какие форматы вы принимаете для работы?</summary>
-          <p>Мы работаем с любыми аудиоформатами (WAV, MP3, AIFF) и MIDI‑файлами. Если у вас есть только идея — пришлите голосовую заметку или описание, мы поможем.</p>
-        </details>
-        <details class="faq-item">
-          <summary>Сколько времени занимает оживление ИИ‑трека?</summary>
-          <p>Обычно от 3 до 7 дней в зависимости от сложности. Срочные заказы (до 48 часов) обсуждаются отдельно.</p>
-        </details>
-        <details class="faq-item">
-          <summary>Можно ли вносить правки после получения финальной версии?</summary>
-          <p>Да, мы предусматриваем до 2‑х итераций правок в рамках стоимости. Дополнительные правки — по договорённости.</p>
-        </details>
-        <details class="faq-item">
-          <summary>Гарантируете ли вы, что трек пройдёт модерацию стримингов?</summary>
-          <p>Да, мы делаем микс и мастеринг по стандартам площадок (‑14 LUFS, правильный True Peak). Если проблема возникнет — доработаем бесплатно.</p>
-        </details>
-      </div>
-    </div>
-  </section>
-
-  <hr class="hr">
-
-  <section id="contact">
-    <div class="wrap contact-inner">
-      <div>
-        <div class="eyebrow">Контакты</div>
-        <h2 style="margin-bottom:16px;">Обсудим проект</h2>
-        <form id="contactForm" action="https://formsubmit.co/vladislavpaderin@gmail.com" method="POST">
-          <input type="hidden" name="_subject" value="Новая заявка с сайта Moon River">
-          <input type="hidden" name="_captcha" value="false">
-          <div class="field">
-            <label for="name">Имя</label>
-            <input id="name" name="name" type="text" required>
-          </div>
-          <div class="field">
-            <label for="email">Email</label>
-            <input id="email" name="email" type="email" required>
-          </div>
-          <div class="field">
-            <label for="project-type">Тип проекта</label>
-            <select id="project-type" name="project-type">
-              <option>Аранжировка трека</option>
-              <option>Оживление ИИ‑трека</option>
-              <option>Музыка для видео или игры</option>
-              <option>Музыка для мероприятия</option>
-              <option>Сведение и мастеринг</option>
-              <option>Другое</option>
-            </select>
-          </div>
-          <div class="field">
-            <label for="track-link">Ссылка на исходный трек (если есть)</label>
-            <input id="track-link" name="track-link" type="url" placeholder="https://...">
-          </div>
-          <div class="field">
-            <label for="message">Расскажите о проекте</label>
-            <textarea id="message" name="message" required></textarea>
-          </div>
-          <button type="submit" class="btn btn-primary">Отправить заявку</button>
-          <div id="form-success">✅ Заявка отправлена — я отвечу в течение дня.</div>
-          <p class="form-note">Форма отправляется через Formsubmit — все заявки приходят на почту.</p>
-        </form>
-      </div>
-      <div class="contact-info">
-        <p>Если удобнее написать напрямую — вот другие каналы связи.</p>
-        <div class="contact-links">
-          <a href="mailto:vladislavpaderin@gmail.com">vladislavpaderin@gmail.com</a>
-          <a href="https://vk.com/moonriver_studio?z=audio_playlist-64552773_1_83d428bccd561b6284" target="_blank">Вконтакте / портфолио →</a>
-          <a href="https://vk.com/gim64552773" target="_blank">Вконтакте / чат →</a>
-          <a href="https://t.me/MoonRiverMusic" target="_blank">Telegram →</a>
-        </div>
-        <p style="margin-top: 24px; font-size:0.9rem; color:var(--text-muted);">
-          Или позвоните: <strong style="color:var(--text);">+7 (995) 081‑02‑06</strong>
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <footer>
-    <div class="wrap" style="display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; width:100%;">
-      <span>© 2026 Moon River</span>
-      <span>Студия аранжировки и продакшна</span>
-    </div>
-  </footer>
-
-  <script>
+<script>
   // ====== Интерактивный микс ======
-  const channels = ['electronic', 'orchestral', 'rock', 'pop'];
+  const channels = ['electronic', 'orchestral', 'rock', 'ambient'];
   const colors = {
     electronic: [88, 169, 160],
     orchestral: [226, 147, 79],
     rock: [192, 96, 74],
-    pop: [138, 131, 160]
+    ambient: [138, 131, 160]
   };
   const sliders = document.querySelectorAll('input[data-channel]');
   const summary = document.getElementById('mix-summary');
@@ -1268,7 +1294,7 @@
     electronic: 'Электроника',
     orchestral: 'Оркестр',
     rock: 'Рок',
-    pop: 'Поп'
+    ambient: 'Эмбиент'
   };
 
   function update() {
@@ -1307,7 +1333,7 @@
   const successBlock = document.getElementById('form-success');
 
   form.addEventListener('submit', function(e) {
-    e.preventDefault(); // отключаем стандартную отправку
+    e.preventDefault();
 
     const formData = new FormData(form);
 
@@ -1321,7 +1347,7 @@
     .then(response => {
       if (response.ok) {
         successBlock.style.display = 'block';
-        form.reset(); // очищаем поля
+        form.reset();
       } else {
         alert('❌ Ошибка отправки. Пожалуйста, попробуйте ещё раз.');
       }
