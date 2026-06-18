@@ -729,63 +729,7 @@
         transition: none !important;
       }
     }
-    /* Стилизация аудиоплеера */
-audio::-webkit-media-controls-panel {
-  background-color: var(--panel);
-  border-radius: 6px;
-}
-audio::-webkit-media-controls-play-button,
-audio::-webkit-media-controls-mute-button {
-  filter: invert(1) brightness(0.8);
-}
-/* Для Firefox */
-audio {
-  background: var(--panel);
-  border-radius: 6px;
-  padding: 4px 0;
-}
-/* === СТИЛИ ДЛЯ ХРОМ / ЯНДЕКС === */
-audio::-webkit-media-controls-timeline {
-  background: transparent;   /* прозрачный фон полосы */
-  border-radius: 4px;
-  height: 4px;
-}
 
-/* Сам бегунок (кружок) — светлый */
-audio::-webkit-media-controls-timeline::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  background: #f2eee6;   /* светлый */
-  border-radius: 50%;
-  width: 14px;
-  height: 14px;
-  cursor: pointer;
-  box-shadow: 0 0 6px rgba(0,0,0,0.3); /* небольшая тень для видимости */
-}
-
-/* Тайминг (цифры времени) — светлый */
-audio::-webkit-media-controls-current-time-display,
-audio::-webkit-media-controls-time-remaining-display {
-  color: #f2eee6;
-  font-weight: 500;
-  font-size: 0.8rem;
-}
-
-/* === СТИЛИ ДЛЯ FIREFOX === */
-audio::-moz-range-track {
-  background: transparent;
-  border-radius: 4px;
-  height: 4px;
-}
-audio::-moz-range-thumb {
-  background: #f2eee6;
-  border: none;
-  border-radius: 50%;
-  width: 14px;
-  height: 14px;
-  cursor: pointer;
-}
-  
     
   </style>
 </head>
