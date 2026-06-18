@@ -1,0 +1,1303 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Moon River — студия аранжировки и оживления музыки</title>
+  <meta name="description" content="Студия аранжировки и оживления ИИ‑музыки. Превращаем сгенерированные треки в живые, качественные композиции. Закажите онлайн.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..900&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #15141a;
+      --panel: #211f26;
+      --panel-line: #34313c;
+      --text: #f2eee6;
+      --text-muted: #9892a0;
+      --amber: #e2934f;
+      --teal: #58a9a0;
+      --ember: #c0604a;
+      --dusk: #8a83a0;
+      --success: #58a9a0;
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Manrope', sans-serif;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+    ::selection {
+      background: var(--amber);
+      color: #15141a;
+    }
+    :focus-visible {
+      outline: 2px solid var(--amber);
+      outline-offset: 3px;
+    }
+    h1, h2, h3 {
+      font-family: 'Fraunces', serif;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+    }
+    .mono {
+      font-family: 'JetBrains Mono', monospace;
+      letter-spacing: 0.04em;
+    }
+    .wrap {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0 28px;
+    }
+
+    /* ---------- HEADER ---------- */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(10px);
+      background: rgba(21, 20, 26, 0.82);
+      border-bottom: 1px solid var(--panel-line);
+    }
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 28px;
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+    .logo {
+      font-family: 'Fraunces', serif;
+      font-size: 1.05rem;
+      font-weight: 600;
+    }
+    .logo span {
+      color: var(--amber);
+    }
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      font-size: 0.92rem;
+      color: var(--text-muted);
+    }
+    .nav-links a:hover {
+      color: var(--text);
+    }
+    .nav-cta {
+      border: 1px solid var(--panel-line);
+      padding: 8px 16px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      transition: border-color .2s, color .2s;
+    }
+    .nav-cta:hover {
+      border-color: var(--amber);
+      color: var(--amber);
+    }
+    @media (max-width: 640px) {
+      .nav-links {
+        display: none;
+      }
+    }
+
+    /* ---------- HERO ---------- */
+    .hero {
+      position: relative;
+      padding: 88px 0 64px;
+      overflow: hidden;
+    }
+    .hero-glow {
+      position: absolute;
+      top: -220px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 760px;
+      height: 560px;
+      background: radial-gradient(circle, var(--mix-color, var(--amber)) 0%, transparent 68%);
+      opacity: 0.22;
+      filter: blur(40px);
+      pointer-events: none;
+      transition: background 0.4s ease;
+    }
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 56px;
+      align-items: center;
+    }
+    @media (max-width: 860px) {
+      .hero-inner {
+        grid-template-columns: 1fr;
+      }
+    }
+    .eyebrow {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 18px;
+    }
+    .eyebrow::before {
+      content: '● ';
+      color: var(--teal);
+    }
+    .hero h1 {
+      font-size: clamp(2.2rem, 5vw, 3.4rem);
+      line-height: 1.08;
+      margin-bottom: 20px;
+    }
+    .hero p.lede {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      max-width: 480px;
+      margin-bottom: 24px;
+    }
+    .hero-tagline {
+      font-family: 'Fraunces', serif;
+      font-style: italic;
+      font-size: 0.98rem;
+      color: var(--text-muted);
+      border-left: 2px solid var(--amber);
+      padding-left: 14px;
+      margin-bottom: 32px;
+      max-width: 440px;
+    }
+    .hero-ctas {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+    .btn {
+      display: inline-block;
+      padding: 13px 24px;
+      border-radius: 6px;
+      font-size: 0.92rem;
+      font-weight: 600;
+      transition: transform .15s ease, opacity .15s ease;
+      cursor: pointer;
+      border: none;
+      background: transparent;
+    }
+    .btn-primary {
+      background: var(--amber);
+      color: #15141a;
+    }
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      opacity: 0.92;
+    }
+    .btn-ghost {
+      border: 1px solid var(--panel-line);
+      color: var(--text);
+    }
+    .btn-ghost:hover {
+      border-color: var(--teal);
+      color: var(--teal);
+    }
+    .btn-success {
+      background: var(--teal);
+      color: #15141a;
+    }
+    .btn-success:hover {
+      transform: translateY(-1px);
+      opacity: 0.92;
+    }
+
+    /* ---------- CONSOLE ---------- */
+    .console {
+      background: var(--panel);
+      border: 1px solid var(--panel-line);
+      border-radius: 10px;
+      padding: 26px 22px 22px;
+    }
+    .console-label {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      margin-bottom: 18px;
+      display: flex;
+      justify-content: space-between;
+    }
+    .channels {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 6px 0 18px;
+    }
+    .channel {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      flex: 1;
+    }
+    .channel-readout {
+      font-size: 0.78rem;
+      min-height: 1.2em;
+    }
+    .fader-track {
+      height: 150px;
+      display: flex;
+      align-items: center;
+    }
+    input[type="range"].vertical {
+      -webkit-appearance: slider-vertical;
+      writing-mode: vertical-lr;
+      direction: rtl;
+      width: 6px;
+      height: 150px;
+      background: transparent;
+      cursor: pointer;
+    }
+    input[type="range"].vertical::-webkit-slider-runnable-track {
+      background: #3a3741;
+      width: 4px;
+      border-radius: 4px;
+    }
+    input[type="range"].vertical::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 18px;
+      height: 10px;
+      border-radius: 2px;
+      background: var(--ch-color, var(--amber));
+      margin-left: -7px;
+      box-shadow: 0 0 8px var(--ch-color, var(--amber));
+    }
+    input[type="range"].vertical::-moz-range-track {
+      background: #3a3741;
+      width: 4px;
+      border-radius: 4px;
+    }
+    input[type="range"].vertical::-moz-range-thumb {
+      width: 18px;
+      height: 10px;
+      border: none;
+      border-radius: 2px;
+      background: var(--ch-color, var(--amber));
+    }
+    .channel-name {
+      font-size: 0.74rem;
+      color: var(--text-muted);
+      text-align: center;
+    }
+    .console-footer {
+      border-top: 1px solid var(--panel-line);
+      padding-top: 14px;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+    #mix-summary {
+      color: var(--text);
+    }
+
+    /* ---------- SECTION SHELL ---------- */
+    section {
+      padding: 84px 0;
+    }
+    .section-head {
+      margin-bottom: 44px;
+    }
+    .section-head .eyebrow {
+      margin-bottom: 10px;
+    }
+    .section-head h2 {
+      font-size: clamp(1.7rem, 3vw, 2.3rem);
+    }
+    .section-head p {
+      color: var(--text-muted);
+      margin-top: 10px;
+      max-width: 520px;
+    }
+    .hr {
+      border: none;
+      border-top: 1px solid var(--panel-line);
+    }
+
+    /* ---------- PORTFOLIO ---------- */
+    .track-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 16px;
+    }
+    .track-card {
+      background: var(--panel);
+      border: 1px solid var(--panel-line);
+      border-radius: 8px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      transition: border-color .2s;
+    }
+    .track-card:hover {
+      border-color: var(--tag-color, var(--amber));
+    }
+    .track-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 10px;
+    }
+    .track-title {
+      font-size: 1rem;
+      font-weight: 600;
+    }
+    .track-duration {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+    .tag-row {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .tag {
+      font-size: 0.7rem;
+      padding: 4px 9px;
+      border-radius: 999px;
+      border: 1px solid var(--panel-line);
+      color: var(--tag-color, var(--amber));
+    }
+    .tag.client {
+      color: var(--text-muted);
+    }
+    .track-link {
+      font-size: 0.85rem;
+      color: var(--text);
+      margin-top: auto;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .track-link:hover {
+      color: var(--tag-color, var(--amber));
+    }
+
+    /* ---------- SERVICES ---------- */
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 18px;
+    }
+    .service-card {
+      border: 1px solid var(--panel-line);
+      border-radius: 8px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+    }
+    .service-card h3 {
+      font-size: 1.05rem;
+      margin-bottom: 10px;
+    }
+    .service-card p {
+      color: var(--text-muted);
+      font-size: 0.92rem;
+      flex: 1;
+    }
+    .service-card .service-price {
+      margin-top: 16px;
+      font-weight: 600;
+      color: var(--amber);
+      font-size: 1rem;
+    }
+    .service-card .btn {
+      align-self: flex-start;
+      margin-top: 16px;
+    }
+
+    /* ---------- PRICES (отдельный блок) ---------- */
+    .price-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 18px;
+    }
+    .price-item {
+      background: var(--panel);
+      border: 1px solid var(--panel-line);
+      border-radius: 8px;
+      padding: 20px;
+      text-align: center;
+    }
+    .price-item .price {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--amber);
+      margin: 8px 0;
+    }
+    .price-item .price-desc {
+      color: var(--text-muted);
+      font-size: 0.82rem;
+    }
+
+    /* ---------- PROCESS ---------- */
+    .process-list {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    @media (max-width: 760px) {
+      .process-list {
+        grid-template-columns: 1fr;
+      }
+    }
+    .process-step .num {
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--teal);
+      font-size: 0.85rem;
+      margin-bottom: 10px;
+      display: block;
+    }
+    .process-step h3 {
+      font-size: 1.02rem;
+      margin-bottom: 8px;
+    }
+    .process-step p {
+      color: var(--text-muted);
+      font-size: 0.92rem;
+    }
+
+    /* ---------- ABOUT ---------- */
+    .about-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+    @media (max-width: 760px) {
+      .about-inner {
+        grid-template-columns: 1fr;
+      }
+    }
+    .about-inner p {
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .about-stats {
+      display: grid;
+      gap: 18px;
+    }
+    .stat {
+      border-left: 2px solid var(--amber);
+      padding-left: 14px;
+    }
+    .stat .n {
+      font-family: 'Fraunces', serif;
+      font-size: 1.7rem;
+      display: block;
+    }
+    .stat .l {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+
+    /* ---------- TESTIMONIALS ---------- */
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 18px;
+    }
+    .testimonial-card {
+      background: var(--panel);
+      border: 1px solid var(--panel-line);
+      border-radius: 8px;
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .testimonial-quote {
+      font-style: italic;
+      font-size: 0.95rem;
+      color: var(--text);
+    }
+    .testimonial-person {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: auto;
+    }
+    .avatar {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: #15141a;
+      flex-shrink: 0;
+    }
+    .person-name {
+      font-size: 0.88rem;
+      font-weight: 600;
+    }
+    .person-role {
+      font-size: 0.76rem;
+      color: var(--text-muted);
+    }
+
+    /* ---------- FAQ ---------- */
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      max-width: 760px;
+    }
+    .faq-item {
+      border: 1px solid var(--panel-line);
+      border-radius: 8px;
+      padding: 18px 20px;
+      background: var(--panel);
+    }
+    .faq-item summary {
+      font-weight: 600;
+      cursor: pointer;
+      color: var(--text);
+      outline: none;
+    }
+    .faq-item summary::-webkit-details-marker {
+      color: var(--amber);
+    }
+    .faq-item p {
+      color: var(--text-muted);
+      margin-top: 12px;
+      font-size: 0.92rem;
+    }
+
+    /* ---------- CONTACT ---------- */
+    .contact-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+    }
+    @media (max-width: 760px) {
+      .contact-inner {
+        grid-template-columns: 1fr;
+      }
+    }
+    .field {
+      margin-bottom: 18px;
+    }
+    .field label {
+      display: block;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-bottom: 7px;
+    }
+    .field input,
+    .field select,
+    .field textarea {
+      width: 100%;
+      background: var(--panel);
+      border: 1px solid var(--panel-line);
+      border-radius: 6px;
+      padding: 11px 13px;
+      color: var(--text);
+      font-family: 'Manrope', sans-serif;
+      font-size: 0.92rem;
+    }
+    .field textarea {
+      resize: vertical;
+      min-height: 90px;
+    }
+    .field input:focus,
+    .field select:focus,
+    .field textarea:focus {
+      border-color: var(--amber);
+    }
+    .form-note {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-top: 10px;
+    }
+    .contact-info p {
+      color: var(--text-muted);
+      margin-bottom: 18px;
+    }
+    .contact-links {
+      display: grid;
+      gap: 10px;
+    }
+    .contact-links a {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--text);
+      font-size: 0.92rem;
+    }
+    .contact-links a:hover {
+      color: var(--amber);
+    }
+    #form-success {
+      display: none;
+      background: rgba(88, 169, 160, 0.12);
+      border: 1px solid var(--teal);
+      color: var(--teal);
+      padding: 12px 14px;
+      border-radius: 6px;
+      font-size: 0.88rem;
+      margin-top: 14px;
+    }
+
+    /* ---------- PROBLEM/SOLUTION ---------- */
+    .problem-solution-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    @media (max-width: 760px) {
+      .problem-solution-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    .ps-card {
+      background: var(--panel);
+      border: 1px solid var(--panel-line);
+      border-radius: 8px;
+      padding: 28px 26px;
+    }
+    .ps-card.problem {
+      border-top: 2px solid var(--ember);
+    }
+    .ps-card.solution {
+      border-top: 2px solid var(--teal);
+    }
+    .ps-card h3 {
+      font-size: 1.05rem;
+      margin-bottom: 18px;
+    }
+    .ps-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .ps-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 11px;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
+    .ps-mark {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.82rem;
+      flex-shrink: 0;
+      margin-top: 3px;
+    }
+    .ps-card.problem .ps-mark {
+      color: var(--ember);
+    }
+    .ps-card.solution .ps-mark {
+      color: var(--teal);
+    }
+
+    /* ---------- FOOTER ---------- */
+    footer {
+      border-top: 1px solid var(--panel-line);
+      padding: 32px 0;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="nav">
+      <div class="logo">MOON <span>RIVER</span></div>
+      <nav class="nav-links">
+        <a href="#portfolio">Портфолио</a>
+        <a href="#services">Услуги</a>
+        <a href="#prices">Цены</a>
+        <a href="#ai-recreation">Оживление ИИ</a>
+        <a href="#testimonials">Отзывы</a>
+        <a href="#about">О студии</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+      <a class="nav-cta" href="#contact">Обсудить проект</a>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-glow" id="heroGlow"></div>
+    <div class="wrap hero-inner">
+      <div>
+        <div class="eyebrow">Студия аранжировки и продакшна</div>
+        <h1>Сгенерировано ИИ.<br>Звучит как живое.</h1>
+        <p class="lede">
+          Анализируем сгенерированную музыку и пересобираем её на качественных
+          инструментах или вживую — сохраняя все нюансы оригинала, но без
+          характерного «ИИ‑звучания». А ещё делаем аранжировки и пишем
+          авторскую музыку с нуля.
+        </p>
+        <p class="hero-tagline">Лунный свет превращает воду в серебро — мы делаем то же самое с треками.</p>
+        <div class="hero-ctas">
+          <a class="btn btn-primary" href="#contact">Получить живую версию трека</a>
+          <a class="btn btn-ghost" href="#portfolio">Смотреть портфолио</a>
+        </div>
+      </div>
+
+      <div class="console">
+        <div class="console-label">
+          <span class="mono">CHANNEL MIX</span>
+          <span class="mono">LIVE</span>
+        </div>
+        <div class="channels">
+          <div class="channel" style="--ch-color:var(--teal)">
+            <div class="channel-readout mono" data-readout="electronic">70%</div>
+            <div class="fader-track">
+              <input class="vertical" type="range" min="0" max="100" value="70" data-channel="electronic" style="--ch-color:var(--teal)">
+            </div>
+            <div class="channel-name">Электроника</div>
+          </div>
+          <div class="channel" style="--ch-color:var(--amber)">
+            <div class="channel-readout mono" data-readout="orchestral">55%</div>
+            <div class="fader-track">
+              <input class="vertical" type="range" min="0" max="100" value="55" data-channel="orchestral" style="--ch-color:var(--amber)">
+            </div>
+            <div class="channel-name">Оркестр</div>
+          </div>
+          <div class="channel" style="--ch-color:var(--ember)">
+            <div class="channel-readout mono" data-readout="rock">40%</div>
+            <div class="fader-track">
+              <input class="vertical" type="range" min="0" max="100" value="40" data-channel="rock" style="--ch-color:var(--ember)">
+            </div>
+            <div class="channel-name">Рок</div>
+          </div>
+          <div class="channel" style="--ch-color:var(--dusk)">
+            <div class="channel-readout mono" data-readout="ambient">60%</div>
+            <div class="fader-track">
+              <input class="vertical" type="range" min="0" max="100" value="60" data-channel="ambient" style="--ch-color:var(--dusk)">
+            </div>
+            <div class="channel-name">Эмбиент</div>
+          </div>
+        </div>
+        <div class="console-footer">
+          Текущий баланс: <span id="mix-summary" class="mono">—</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="hr">
+
+  <section id="why">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">Почему это важно</div>
+        <h2>Почему ИИ‑треки не работают сами по себе</h2>
+        <p>ИИ создаёт основу, но без живого звука музыка остаётся «пластиковой» и не цепляет слушателя.</p>
+      </div>
+      <div class="problem-solution-grid">
+        <div class="ps-card problem">
+          <h3>Что не так с ИИ‑треком</h3>
+          <ul class="ps-list">
+            <li><span class="ps-mark">✕</span><span>Синтетический, «пластиковый» звук без живого характера</span></li>
+            <li><span class="ps-mark">✕</span><span>Артефакты и неестественные переходы в аранжировке</span></li>
+            <li><span class="ps-mark">✕</span><span>Не проходит модерацию стриминговых площадок и лейблов</span></li>
+            <li><span class="ps-mark">✕</span><span>Нет эмоции и глубины — слушатель не «зацепится»</span></li>
+            <li><span class="ps-mark">✕</span><span>Одинаковое звучание у всех, нет уникальности</span></li>
+          </ul>
+        </div>
+        <div class="ps-card solution">
+          <h3>Что делает Moon River</h3>
+          <ul class="ps-list">
+            <li><span class="ps-mark">✓</span><span>Перебиваем инструменты живым звуком: гитара, бас, клавиши, духовые</span></li>
+            <li><span class="ps-mark">✓</span><span>Полная аранжировка и редактирование под ваш жанр</span></li>
+            <li><span class="ps-mark">✓</span><span>Студийный микс и мастеринг, готовый для стриминга</span></li>
+            <li><span class="ps-mark">✓</span><span>Живые партии и деталировка звука вместо ИИ‑шаблона</span></li>
+            <li><span class="ps-mark">✓</span><span>Уникальное звучание, которое выделяет вас среди остальных</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="hr">
+
+  <section id="portfolio">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">Портфолио</div>
+        <h2>Несколько треков, которые уже доплыли до релиза</h2>
+        <p>Жанры разные — подход к каждому проекту один: услышать, что нужно автору, и собрать это в трек.</p>
+      </div>
+
+      <div class="track-grid">
+        <div class="track-card" style="--tag-color:var(--teal)">
+          <div class="track-top">
+            <div class="track-title">Лунный прилив</div>
+            <div class="track-duration mono">3:24</div>
+          </div>
+          <div class="tag-row">
+            <span class="tag" style="--tag-color:var(--teal)">Электроника</span>
+            <span class="tag client">Артист</span>
+          </div>
+          <a class="track-link" href="#" style="--tag-color:var(--teal)">Слушать →</a>
+        </div>
+
+        <div class="track-card" style="--tag-color:var(--teal)">
+          <div class="track-top">
+            <div class="track-title">Симфония песка</div>
+            <div class="track-duration mono">2:51</div>
+          </div>
+          <div class="tag-row">
+            <span class="tag" style="--tag-color:var(--teal)">Оркестровая</span>
+            <span class="tag client" style="--tag-color:var(--teal)">Оживлено из ИИ</span>
+          </div>
+          <a class="track-link" href="#" style="--tag-color:var(--teal)">Слушать →</a>
+        </div>
+
+        <div class="track-card" style="--tag-color:var(--ember)">
+          <div class="track-top">
+            <div class="track-title">Крылья из стали</div>
+            <div class="track-duration mono">4:02</div>
+          </div>
+          <div class="tag-row">
+            <span class="tag" style="--tag-color:var(--ember)">Рок</span>
+            <span class="tag client">Личный проект</span>
+          </div>
+          <a class="track-link" href="#" style="--tag-color:var(--ember)">Слушать →</a>
+        </div>
+
+        <div class="track-card" style="--tag-color:var(--dusk)">
+          <div class="track-top">
+            <div class="track-title">Туманный берег</div>
+            <div class="track-duration mono">3:47</div>
+          </div>
+          <div class="tag-row">
+            <span class="tag" style="--tag-color:var(--dusk)">Эмбиент</span>
+            <span class="tag client" style="--tag-color:var(--dusk)">Оживлено из ИИ</span>
+          </div>
+          <a class="track-link" href="#" style="--tag-color:var(--dusk)">Слушать →</a>
+        </div>
+
+        <div class="track-card" style="--tag-color:var(--teal)">
+          <div class="track-top">
+            <div class="track-title">Городские огни</div>
+            <div class="track-duration mono">3:10</div>
+          </div>
+          <div class="tag-row">
+            <span class="tag" style="--tag-color:var(--teal)">Поп</span>
+            <span class="tag client">Артист</span>
+          </div>
+          <a class="track-link" href="#" style="--tag-color:var(--teal)">Слушать →</a>
+        </div>
+
+        <div class="track-card" style="--tag-color:var(--amber)">
+          <div class="track-top">
+            <div class="track-title">Последний вальс</div>
+            <div class="track-duration mono">2:38</div>
+          </div>
+          <div class="tag-row">
+            <span class="tag" style="--tag-color:var(--amber)">Мероприятие</span>
+            <span class="tag client">Личный проект</span>
+          </div>
+          <a class="track-link" href="#" style="--tag-color:var(--amber)">Слушать →</a>
+        </div>
+      </div>
+
+      <div style="margin-top: 28px; text-align: center;">
+        <a class="btn btn-primary" href="#contact">Заказать свой трек</a>
+      </div>
+    </div>
+  </section>
+
+  <hr class="hr">
+
+  <section id="services">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">Услуги</div>
+        <h2>Три течения студии</h2>
+        <p>Стоимость и сроки обсуждаются индивидуально, но ниже вы найдёте ориентировочные цены.</p>
+      </div>
+      <div class="service-grid">
+        <div class="service-card">
+          <h3>Аранжировка авторской музыки</h3>
+          <p>Берём вашу идею, мелодию или демо и доводим до полноценной аранжировки — с инструментами, структурой и динамикой.</p>
+          <div class="service-price">от 15 000 ₽</div>
+          <a class="btn btn-primary" href="#contact">Заказать аранжировку</a>
+        </div>
+        <div class="service-card" style="border-color:var(--teal);">
+          <h3>Оживление ИИ‑музыки</h3>
+          <p>Анализируем сгенерированный трек и пересобираем его на качественных инструментах или вживую — сохраняя нюансы оригинала, в высоком качестве звучания.</p>
+          <div class="service-price">от 10 000 ₽</div>
+          <a class="btn btn-success" href="#ai-recreation">Подробнее</a>
+        </div>
+        <div class="service-card">
+          <h3>Авторская музыка на заказ</h3>
+          <p>Пишем оригинальную музыку с нуля под конкретную задачу — личный трек, видео, игра или особый случай вроде свадьбы.</p>
+          <div class="service-price">от 25 000 ₽</div>
+          <a class="btn btn-primary" href="#contact">Написать музыку</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="hr">
+
+  <section id="prices">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">Ориентировочные цены</div>
+        <h2>Прозрачный прайс</h2>
+        <p>Окончательная стоимость зависит от объёма работы, но вы уже сейчас можете прикинуть бюджет.</p>
+      </div>
+      <div class="price-grid">
+        <div class="price-item">
+          <h3>Аранжировка</h3>
+          <div class="price">15 000 ₽</div>
+          <div class="price-desc">под ключ, с правками</div>
+        </div>
+        <div class="price-item">
+          <h3>Оживление ИИ</h3>
+          <div class="price">10 000 ₽</div>
+          <div class="price-desc">пересборка + микс</div>
+        </div>
+        <div class="price-item">
+          <h3>Авторский трек</h3>
+          <div class="price">25 000 ₽</div>
+          <div class="price-desc">уникальная музыка с нуля</div>
+        </div>
+        <div class="price-item">
+          <h3>Сведение / Мастеринг</h3>
+          <div class="price">7 000 ₽</div>
+          <div class="price-desc">за готовый микс</div>
+        </div>
+      </div>
+      <p style="color:var(--text-muted); margin-top:20px; text-align:center; font-size:0.9rem;">
+        * Все цены указаны за стандартный трек длительностью до 4 минут. Для точного расчёта свяжитесь с нами.
+      </p>
+    </div>
+  </section>
+
+  <hr class="hr">
+
+  <section id="ai-recreation">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">Оживление ИИ‑музыки</div>
+        <h2>Как мы выводим треки на свет</h2>
+        <p>ИИ‑генератор хорошо даёт идею, но не всегда — нужное звучание. Мы разбираем трек на составляющие и пересобираем его так, чтобы не потерять ни одной детали оригинала.</p>
+      </div>
+      <div class="process-list">
+        <div class="process-step">
+          <span class="num">01</span>
+          <h3>Анализ</h3>
+          <p>Разбираем сгенерированный трек на партии — ритм, мелодию, гармонию, текстуру — и фиксируем нюансы оригинала, которые важно сохранить.</p>
+        </div>
+        <div class="process-step">
+          <span class="num">02</span>
+          <h3>Подбор инструментов</h3>
+          <p>Выбираем качественные виртуальные или живые инструменты под каждую партию, ориентируясь на фразировку, динамику и характер оригинала.</p>
+        </div>
+        <div class="process-step">
+          <span class="num">03</span>
+          <h3>Пересборка</h3>
+          <p>Записываем или программируем партии заново, сохраняя структуру и нюансы трека, но убирая характерное «ИИ‑звучание».</p>
+        </div>
+      </div>
+      <div style="margin-top: 28px; background: var(--panel); border-radius: 8px; padding: 20px; border: 1px solid var(--panel-line);">
+        <p style="color: var(--text-muted);"><strong style="color: var(--text);">Примеры «до / после»:</strong> мы подготовили аудио‑фрагменты, чтобы вы могли услышать разницу. Запросите их в форме — и мы пришлём ссылку на прослушивание.</p>
+        <a class="btn btn-primary" href="#contact" style="margin-top: 12px;">Запросить примеры</a>
+      </div>
+    </div>
+  </section>
+
+  <hr class="hr">
+
+  <section id="process">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">Процесс</div>
+        <h2>Как трек доходит до финала</h2>
+      </div>
+      <div class="process-list">
+        <div class="process-step">
+          <span class="num">01</span>
+          <h3>Бриф</h3>
+          <p>Обсуждаем задачу: жанр, настроение, референсы, сроки и где будет использоваться музыка.</p>
+        </div>
+        <div class="process-step">
+          <span class="num">02</span>
+          <h3>Демо</h3>
+          <p>Присылаем набросок основной идеи — до того, как двигаться дальше, чтобы синхронизироваться по направлению.</p>
+        </div>
+        <div class="process-step">
+          <span class="num">03</span>
+          <h3>Финал</h3>
+          <p>Дорабатываем по правкам и передаём готовый трек в нужном формате.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="hr">
+
+  <section id="about">
+    <div class="wrap about-inner">
+      <div>
+        <div class="eyebrow">О студии</div>
+        <h2 style="margin-bottom:20px;">Команда, которая живёт звуком</h2>
+        <p>Moon River основана в 2020 году продюсером и аранжировщиком <strong>Александром Вороновым</strong>. За плечами — 10 лет работы в продакшне, участие в записи более 50 релизов для инди‑артистов и брендов.</p>
+        <p>Мы работаем в собственной студии с акустическим контролем, используем топовые библиотеки (Spitfire, Orchestral Tools, Native Instruments) и сотрудничаем с сессионными музыкантами (гитара, бас, виолончель, духовые).</p>
+        <p>Наш подход — не навязывать свой стиль, а найти тот звук, который нужен именно вашему проекту.</p>
+      </div>
+      <div class="about-stats">
+        <div class="stat">
+          <span class="n">5+</span>
+          <span class="l">лет на рынке</span>
+        </div>
+        <div class="stat">
+          <span class="n">70+</span>
+          <span class="l">завершённых проектов</span>
+        </div>
+        <div class="stat">
+          <span class="n">48ч</span>
+          <span class="l">средний ответ по брифу</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="hr">
+
+  <section id="testimonials">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">Отзывы</div>
+        <h2>Голоса с другого берега</h2>
+        <p>Несколько слов от тех, с кем мы уже работали.</p>
+      </div>
+      <div class="testimonial-grid">
+        <div class="testimonial-card">
+          <p class="testimonial-quote">«Не ожидал, что черновик из нейросети можно довести до такого живого звучания — слушатели не верят, что там был ИИ. Трек набрал 10K прослушиваний за первую неделю.»</p>
+          <div class="testimonial-person">
+            <div class="avatar" style="background:var(--amber);">АК</div>
+            <div>
+              <div class="person-name">Артём К.</div>
+              <div class="person-role">Оживление ИИ‑трека</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <p class="testimonial-quote">«Прислала голосовую заметку с мелодией и получила аранжировку, которая прозвучала лучше, чем я представляла. Александра понял меня с полуслова.»</p>
+          <div class="testimonial-person">
+            <div class="avatar" style="background:var(--teal);">МС</div>
+            <div>
+              <div class="person-name">Мария С.</div>
+              <div class="person-role">Аранжировка авторской музыки</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <p class="testimonial-quote">«Написали трек точно под тайминг ролика, с первого раза без правок по структуре. Клиент был в восторге, проект сдали досрочно.»</p>
+          <div class="testimonial-person">
+            <div class="avatar" style="background:var(--ember);">ДР</div>
+            <div>
+              <div class="person-name">Денис Р.</div>
+              <div class="person-role">Музыка на заказ для видео</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="hr">
+
+  <section id="faq">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">Вопросы и ответы</div>
+        <h2>Часто задаваемые вопросы</h2>
+      </div>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary>Какие форматы вы принимаете для работы?</summary>
+          <p>Мы работаем с любыми аудиоформатами (WAV, MP3, AIFF) и MIDI‑файлами. Если у вас есть только идея — пришлите голосовую заметку или описание, мы поможем.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Сколько времени занимает оживление ИИ‑трека?</summary>
+          <p>Обычно от 3 до 7 дней в зависимости от сложности. Срочные заказы (до 48 часов) обсуждаются отдельно.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Можно ли вносить правки после получения финальной версии?</summary>
+          <p>Да, мы предусматриваем до 2‑х итераций правок в рамках стоимости. Дополнительные правки — по договорённости.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Гарантируете ли вы, что трек пройдёт модерацию стримингов?</summary>
+          <p>Да, мы делаем микс и мастеринг по стандартам площадок (‑14 LUFS, правильный True Peak). Если проблема возникнет — доработаем бесплатно.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <hr class="hr">
+
+  <section id="contact">
+    <div class="wrap contact-inner">
+      <div>
+        <div class="eyebrow">Контакты</div>
+        <h2 style="margin-bottom:16px;">Обсудим проект</h2>
+        <form id="contactForm" action="https://formspree.io/f/ваш-ключ" method="POST">
+          <input type="hidden" name="_subject" value="Новая заявка с сайта Moon River">
+          <div class="field">
+            <label for="name">Имя</label>
+            <input id="name" name="name" type="text" required>
+          </div>
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" required>
+          </div>
+          <div class="field">
+            <label for="project-type">Тип проекта</label>
+            <select id="project-type" name="project-type">
+              <option>Аранжировка трека</option>
+              <option>Оживление ИИ‑трека</option>
+              <option>Музыка для видео или игры</option>
+              <option>Музыка для мероприятия</option>
+              <option>Сведение и мастеринг</option>
+              <option>Другое</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="track-link">Ссылка на исходный трек (если есть)</label>
+            <input id="track-link" name="track-link" type="url" placeholder="https://...">
+          </div>
+          <div class="field">
+            <label for="message">Расскажите о проекте</label>
+            <textarea id="message" name="message" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Отправить заявку</button>
+          <div id="form-success">✅ Заявка отправлена — я отвечу в течение 24 часов.</div>
+          <p class="form-note">Форма работает через Formspree — замените <code>ваш-ключ</code> в атрибуте <code>action</code> на свой.</p>
+        </form>
+      </div>
+      <div class="contact-info">
+        <p>Если удобнее написать напрямую — вот другие каналы связи.</p>
+        <div class="contact-links">
+          <a href="mailto:studio@moonriver.com">studio@moonriver.com</a>
+          <a href="#" target="_blank">SoundCloud / портфолио →</a>
+          <a href="#" target="_blank">Instagram →</a>
+          <a href="#" target="_blank">Telegram →</a>
+        </div>
+        <p style="margin-top: 24px; font-size:0.9rem; color:var(--text-muted);">
+          Или позвоните: <strong style="color:var(--text);">+7 (999) 123‑45‑67</strong>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap" style="display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; width:100%;">
+      <span>© 2026 Moon River</span>
+      <span>Студия аранжировки и продакшна</span>
+    </div>
+  </footer>
+
+  <script>
+    // ====== Интерактивный микс ======
+    const channels = ['electronic', 'orchestral', 'rock', 'ambient'];
+    const colors = {
+      electronic: [88, 169, 160],
+      orchestral: [226, 147, 79],
+      rock: [192, 96, 74],
+      ambient: [138, 131, 160]
+    };
+    const sliders = document.querySelectorAll('input[data-channel]');
+    const summary = document.getElementById('mix-summary');
+    const glow = document.getElementById('heroGlow');
+
+    const labels = {
+      electronic: 'Электроника',
+      orchestral: 'Оркестр',
+      rock: 'Рок',
+      ambient: 'Эмбиент'
+    };
+
+    function update() {
+      const values = {};
+      let total = 0;
+      sliders.forEach(s => {
+        values[s.dataset.channel] = Number(s.value);
+        total += Number(s.value);
+      });
+      if (total === 0) total = 1;
+
+      let r = 0,
+        g = 0,
+        b = 0;
+      channels.forEach(ch => {
+        const weight = values[ch] / total;
+        r += colors[ch][0] * weight;
+        g += colors[ch][1] * weight;
+        b += colors[ch][2] * weight;
+
+        const readout = document.querySelector('[data-readout="' + ch + '"]');
+        if (readout) readout.textContent = values[ch] + '%';
+      });
+      glow.style.setProperty('--mix-color', `rgb(${r|0}, ${g|0}, ${b|0})`);
+      glow.style.background = `radial-gradient(circle, rgb(${r|0}, ${g|0}, ${b|0}) 0%, transparent 68%)`;
+
+      const sorted = channels
+        .map(ch => ({ ch, pct: Math.round((values[ch] / total) * 100) }))
+        .sort((a, b) => b.pct - a.pct);
+      summary.textContent = sorted.map(s => `${labels[s.ch]} ${s.pct}%`).join(' · ');
+    }
+
+    sliders.forEach(s => s.addEventListener('input', update));
+    update();
+
+    // ====== Форма: показываем успех (без перезагрузки) ======
+    const form = document.getElementById('contactForm');
+    const successBlock = document.getElementById('form-success');
+
+    form.addEventListener('submit', function(e) {
+      // Formspree перехватит отправку, мы лишь покажем сообщение после успешного сабмита
+      // Можно использовать асинхронную отправку, но для простоты оставим стандартную отправку.
+      // Если хотите без перезагрузки — можно добавить fetch, но тогда Formspree требует специального подхода.
+      // Пока оставим как есть: форма отправится на Formspree, страница перезагрузится.
+      // Но чтобы показать успех, можно использовать AJAX. Для простоты я оставлю как есть.
+      // Однако в целях демонстрации покажу сообщение при клике (без отправки на сервер, чтобы не было ошибки CORS при демо)
+      // На практике замените action на свой и уберите preventDefault, либо реализуйте fetch.
+      e.preventDefault(); // убираем для демонстрации
+      successBlock.style.display = 'block';
+      // В реальности замените на fetch с отправкой на Formspree или просто уберите preventDefault.
+    });
+  </script>
+
+</body>
+</html>
