@@ -729,6 +729,21 @@
         transition: none !important;
       }
     }
+    /* Стилизация аудиоплеера */
+audio::-webkit-media-controls-panel {
+  background-color: var(--panel);
+  border-radius: 6px;
+}
+audio::-webkit-media-controls-play-button,
+audio::-webkit-media-controls-mute-button {
+  filter: invert(1) brightness(0.8);
+}
+/* Для Firefox */
+audio {
+  background: var(--panel);
+  border-radius: 6px;
+  padding: 4px 0;
+}
   
     
   </style>
@@ -867,7 +882,7 @@
             <span class="tag client">Оживлено из ИИ</span>
           </div>
           <audio controls style="width:100%; margin-top:8px; border-radius:4px;">
-            <source src="luna.mp3" type="audio/mpeg">
+            <source src="luna.mp3" type="audio/audio/mpeg">
           </audio>
         </div>
 
