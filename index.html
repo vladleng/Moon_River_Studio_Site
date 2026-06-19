@@ -353,11 +353,14 @@
 
     /* ---------- SERVICES (5 карточек) ---------- */
     .service-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
       gap: 18px;
     }
     .service-card {
+      flex: 0 0 calc(33.333% - 18px);
+      max-width: calc(33.333% - 18px);
       border: 1px solid var(--panel-line);
       border-radius: 8px;
       padding: 24px;
