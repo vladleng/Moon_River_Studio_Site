@@ -386,7 +386,13 @@
       align-self: flex-start;
       margin-top: 16px;
     }
-
+    /* На мобильных – по одной колонке */
+    @media (max-width: 760px) {
+    .service-card {
+      flex: 0 0 100%;
+      max-width: 100%;
+    }
+  }
     /* ---------- PRICES ---------- */
     .price-grid {
       display: grid;
