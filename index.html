@@ -359,28 +359,29 @@
       gap: 18px;
     }
     .service-card {
-      flex: 0 0 calc(33.333% - 18px);
-      max-width: calc(33.333% - 18px);
       border: 1px solid var(--panel-line);
       border-radius: 8px;
-      padding: 24px;
+      padding: 32px 24px 28px;
       display: flex;
       flex-direction: column;
+      align-items: center; /* центрируем всё содержимое по горизонтали */
+      min-height: 320px; /* делаем карточки выше — регулируйте по вкусу */
     }
     .service-card h3 {
       font-size: 1.05rem;
       margin-bottom: 10px;
     }
     .service-card p {
-      color: var(--text-muted);
-      font-size: 0.92rem;
-      flex: 1;
+      text-align: left; /* или left — как вам удобнее */
+      width: 100%;
     }
     .service-card .service-price {
       margin-top: 16px;
       font-weight: 600;
       color: var(--amber);
-      font-size: 1rem;
+      font-size: 1.1rem;
+      text-align: center;
+      width: 100%;
     }
     .service-card .btn {
       align-self: flex-start;
@@ -389,8 +390,8 @@
     /* На мобильных – по одной колонке */
     @media (max-width: 760px) {
     .service-card {
-      flex: 0 0 100%;
-      max-width: 100%;
+      align-self: center; /* было flex-start */
+      margin-top: 18px;
     }
   }
     /* ---------- PRICES ---------- */
