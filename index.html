@@ -752,6 +752,31 @@
         transition: none !important;
       }
     }
+    /* Фоновое изображение для блока "Оживление ИИ" */
+#ai-recreation {
+  position: relative;
+  background-image: url('ai_stem_arange_06.jpg'); /* замените на нужный файл */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  /* background-attachment: fixed;  если хотите эффект параллакса — раскомментируйте */
+}
+
+#ai-recreation::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(21, 20, 26, 0.7); /* затемнение, регулируйте прозрачность */
+  z-index: 1;
+}
+
+#ai-recreation .wrap {
+  position: relative;
+  z-index: 2;
+}
   </style>
 </head>
 <body>
@@ -981,7 +1006,7 @@
           <span class="tag client" style="--tag-color:var(--teal)">Оживлено из ИИ</span>
         </div>
         <audio controls style="width:100%; margin-top:8px; border-radius:4px;">
-          <source src="audio/Bumazhki.mp3" type="audio/mpeg">
+          <source src="audio/bumazhki.mp3" type="audio/mpeg">
         </audio>
       </div>
       <div class="track-card" style="--tag-color:var(--ember)">
