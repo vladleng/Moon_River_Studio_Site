@@ -359,13 +359,16 @@
       gap: 18px;
     }
     .service-card {
+      flex: 0 0 calc(33.333% - 18px);
+      max-width: 320px; /* ← главное: ограничиваем ширину */
+      min-width: 240px; /* чтобы на маленьких экранах не сжимались слишком сильно */
       border: 1px solid var(--panel-line);
       border-radius: 8px;
       padding: 32px 24px 28px;
       display: flex;
       flex-direction: column;
-      align-items: center; /* центрируем всё содержимое по горизонтали */
-      min-height: 320px; /* делаем карточки выше — регулируйте по вкусу */
+      align-items: center; /* центрируем содержимое */
+      min-height: 320px;
     }
     .service-card h3 {
       font-size: 1.05rem;
@@ -390,8 +393,9 @@
     /* На мобильных – по одной колонке */
     @media (max-width: 760px) {
     .service-card {
-      align-self: center; /* было flex-start */
-      margin-top: 18px;
+      flex: 0 0 100%;
+      max-width: 100%;
+      min-width: unset;
     }
   }
     /* ---------- PRICES ---------- */
