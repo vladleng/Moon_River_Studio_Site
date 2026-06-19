@@ -919,6 +919,7 @@
       <h2>Как мы выводим треки на свет</h2>
       <p>ИИ‑генератор хорошо даёт идею, но не всегда — нужное звучание. Мы разбираем трек на составляющие и пересобираем его так, чтобы не потерять ни одной детали оригинала.</p>
     </div>
+
     <div class="process-list">
       <div class="process-step">
         <span class="num">01</span>
@@ -936,13 +937,42 @@
         <p>Записываем или программируем партии заново, сохраняя структуру и нюансы трека, но убирая характерное «ИИ‑звучание».</p>
       </div>
     </div>
-    <div style="margin-top: 28px; background: var(--panel); border-radius: 8px; padding: 20px; border: 1px solid var(--panel-line);">
-      <p style="color: var(--text-muted);"><strong style="color: var(--text);">Примеры «до / после»:</strong> мы подготовили аудио‑фрагменты, чтобы вы могли услышать разницу. Запросите их в форме — и мы пришлём ссылку на прослушивание.</p>
-      <a class="btn btn-primary" href="#contact" style="margin-top: 12px;">Запросить примеры</a>
+
+    <!-- Сравнение треков: 2 строки по 2 плеера -->
+    <div style="margin-top: 40px; display: grid; grid-template-columns: 1fr 1fr; gap: 24px 20px;">
+      <!-- Первый пример -->
+      <div>
+        <p style="text-align: center; color: var(--text); font-weight: 600; margin-bottom: 6px; text-shadow: 0 2px 8px rgba(0,0,0,0.8);">🎧 ИИ‑версия (трек 1)</p>
+        <audio controls style="width: 100%;">
+          <source src="audio/ai_track1.mp3" type="audio/mpeg">
+          Ваш браузер не поддерживает аудио.
+        </audio>
+      </div>
+      <div>
+        <p style="text-align: center; color: var(--text); font-weight: 600; margin-bottom: 6px; text-shadow: 0 2px 8px rgba(0,0,0,0.8);">🎧 Живая версия (трек 1)</p>
+        <audio controls style="width: 100%;">
+          <source src="audio/live_track1.mp3" type="audio/mpeg">
+          Ваш браузер не поддерживает аудио.
+        </audio>
+      </div>
+      <!-- Второй пример -->
+      <div>
+        <p style="text-align: center; color: var(--text); font-weight: 600; margin-bottom: 6px; text-shadow: 0 2px 8px rgba(0,0,0,0.8);">🎧 ИИ‑версия (трек 2)</p>
+        <audio controls style="width: 100%;">
+          <source src="audio/ai_track2.mp3" type="audio/mpeg">
+          Ваш браузер не поддерживает аудио.
+        </audio>
+      </div>
+      <div>
+        <p style="text-align: center; color: var(--text); font-weight: 600; margin-bottom: 6px; text-shadow: 0 2px 8px rgba(0,0,0,0.8);">🎧 Живая версия (трек 2)</p>
+        <audio controls style="width: 100%;">
+          <source src="audio/live_track2.mp3" type="audio/mpeg">
+          Ваш браузер не поддерживает аудио.
+        </audio>
+      </div>
     </div>
   </div>
 </section>
-
 <hr class="hr">
 
 <!-- 4. УСЛУГИ (5 карточек) -->
