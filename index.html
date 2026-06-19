@@ -141,8 +141,8 @@
       position: relative;
       z-index: 2;
       display: grid;
-      grid-template-columns: 0.6fr 1.4fr; /* было 1.1fr 0.9fr */
-      gap: 40px; /* можно чуть уменьшить отступ */
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 56px;
       align-items: center;
     }
     @media (max-width: 860px) {
@@ -233,11 +233,8 @@
     /* ---------- ИЗОБРАЖЕНИЕ В ГЕРОЕ ---------- */
     .hero-image {
       width: 100%;
-      height: auto;
       border-radius: 10px;
-      max-height: 600px; /* ограничим, чтобы не уходило за экран */
       box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
-      object-fit: contain; /* чтобы не обрезалось */
       transition: transform 0.3s ease;
     }
     .hero-image:hover {
