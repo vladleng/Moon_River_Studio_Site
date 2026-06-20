@@ -360,32 +360,40 @@
     }
     .service-card {
       flex: 0 0 calc(33.333% - 18px);
-      max-width: 320px; /* ← главное: ограничиваем ширину */
-      min-width: 240px; /* чтобы на маленьких экранах не сжимались слишком сильно */
+      max-width: 320px;
+      min-width: 240px;
       border: 1px solid var(--panel-line);
       border-radius: 8px;
       padding: 32px 24px 28px;
       display: flex;
       flex-direction: column;
-      align-items: center; /* центрируем содержимое */
-      min-height: 320px;
+      align-items: center;
+      min-height: 340px; /* можно увеличить/уменьшить */
+      justify-content: space-between; /* распределяем пространство */
     }
+    
     .service-card h3 {
       font-size: 1.05rem;
       margin-bottom: 10px;
+      text-align: center;
     }
+    
     .service-card p {
-      text-align: left; /* или left — как вам удобнее */
+      flex: 1; /* занимает всё свободное место, прижимая ценник и кнопку вниз */
+      text-align: left;
       width: 100%;
+      margin-bottom: 16px;
     }
+    
     .service-card .service-price {
-      margin-top: 16px;
       font-weight: 600;
       color: var(--amber);
       font-size: 1.1rem;
       text-align: center;
       width: 100%;
+      margin-top: auto; /* дополнительная страховка */
     }
+    
     .service-card .btn {
       align-self: center;
       margin-top: 16px;
