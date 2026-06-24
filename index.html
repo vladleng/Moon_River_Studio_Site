@@ -114,7 +114,7 @@
       }
     }
 
-    /* ---------- HERO ---------- */
+    /* ---------- HERO (центрированный, без микшера) ---------- */
     .hero {
       position: relative;
       padding: 88px 0 64px;
@@ -134,35 +134,13 @@
       background: rgba(21, 20, 26, 0.5);
       z-index: 1;
     }
-    .hero-glow {
-      position: absolute;
-      top: -220px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 760px;
-      height: 560px;
-      background: radial-gradient(circle, var(--mix-color, var(--amber)) 0%, transparent 68%);
-      opacity: 0.15;
-      filter: blur(60px);
-      pointer-events: none;
-      transition: background 0.4s ease;
-      z-index: 1;
-    }
     .hero-inner {
       position: relative;
       z-index: 2;
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 56px;
-      align-items: center;
-    }
-    @media (max-width: 860px) {
-      .hero-inner {
-        grid-template-columns: 1fr;
-        max-width: 700px; /* опционально, чтобы текст не растягивался */
-        margin: 0 auto;
-        text-align: center; /* чтобы всё было по центру */
-      }
+      max-width: 700px;
+      margin: 0 auto;
+      text-align: center;
+      display: block; /* вместо grid */
     }
     .eyebrow {
       font-size: 0.78rem;
@@ -185,8 +163,8 @@
       color: #f0ece4;
       text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
       font-size: 1.05rem;
-      max-width: 480px;
-      margin-bottom: 24px;
+      max-width: 600px;
+      margin: 0 auto 24px auto;
     }
     .hero-tagline {
       font-family: 'Fraunces', serif;
@@ -196,13 +174,15 @@
       text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
       border-left: 2px solid var(--amber);
       padding-left: 14px;
-      margin-bottom: 32px;
       max-width: 440px;
+      margin: 0 auto 32px auto;
+      text-align: left;
     }
     .hero-ctas {
       display: flex;
       gap: 14px;
       flex-wrap: wrap;
+      justify-content: center;
     }
 
     .btn {
@@ -242,93 +222,6 @@
     .btn-success:hover {
       transform: translateY(-1px);
       opacity: 0.92;
-    }
-
-    /* ---------- CONSOLE ---------- */
-    .console {
-      background: var(--panel);
-      border: 1px solid var(--panel-line);
-      border-radius: 10px;
-      padding: 26px 22px 22px;
-    }
-    .console-label {
-      font-size: 0.72rem;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      margin-bottom: 18px;
-      display: flex;
-      justify-content: space-between;
-    }
-    .channels {
-      display: flex;
-      justify-content: space-between;
-      gap: 14px;
-      padding: 6px 0 18px;
-    }
-    .channel {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 10px;
-      flex: 1;
-    }
-    .channel-readout {
-      font-size: 0.78rem;
-      min-height: 1.2em;
-    }
-    .fader-track {
-      height: 150px;
-      display: flex;
-      align-items: center;
-    }
-    input[type="range"].vertical {
-      -webkit-appearance: slider-vertical;
-      writing-mode: vertical-lr;
-      direction: rtl;
-      width: 6px;
-      height: 150px;
-      background: transparent;
-      cursor: pointer;
-    }
-    input[type="range"].vertical::-webkit-slider-runnable-track {
-      background: #3a3741;
-      width: 4px;
-      border-radius: 4px;
-    }
-    input[type="range"].vertical::-webkit-slider-thumb {
-      -webkit-appearance: none;
-      width: 18px;
-      height: 10px;
-      border-radius: 2px;
-      background: var(--ch-color, var(--amber));
-      margin-left: -7px;
-      box-shadow: 0 0 8px var(--ch-color, var(--amber));
-    }
-    input[type="range"].vertical::-moz-range-track {
-      background: #3a3741;
-      width: 4px;
-      border-radius: 4px;
-    }
-    input[type="range"].vertical::-moz-range-thumb {
-      width: 18px;
-      height: 10px;
-      border: none;
-      border-radius: 2px;
-      background: var(--ch-color, var(--amber));
-    }
-    .channel-name {
-      font-size: 0.74rem;
-      color: var(--text-muted);
-      text-align: center;
-    }
-    .console-footer {
-      border-top: 1px solid var(--panel-line);
-      padding-top: 14px;
-      font-size: 0.82rem;
-      color: var(--text-muted);
-    }
-    #mix-summary {
-      color: var(--text);
     }
 
     /* ---------- SECTION SHELL ---------- */
@@ -757,6 +650,7 @@
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
+      background-attachment: fixed;
     }
     #ai-recreation::before {
       content: '';
@@ -791,9 +685,6 @@
       border-radius: 8px;
       padding: 4px 0;
     }
-      #ai-recreation {
-        background-attachment: fixed;
-    }
 
     /* ---------- Фото-аватары в отзывах ---------- */
     .avatar-img {
@@ -822,9 +713,8 @@
   </div>
 </header>
 
-<!-- 1. ГЕРОЙ -->
+<!-- 1. ГЕРОЙ (центрированный, без микшера) -->
 <section class="hero">
-  <div class="hero-glow" id="heroGlow"></div>
   <div class="wrap hero-inner">
     <div>
       <div class="eyebrow">Студия аранжировки и продакшна</div>
@@ -839,6 +729,7 @@
         <a class="btn btn-ghost" href="#portfolio">Смотреть портфолио</a>
       </div>
     </div>
+  </div>
 </section>
 
 <hr class="hr">
@@ -1149,7 +1040,7 @@
 
 <hr class="hr">
 
-<!-- 8. ПРОЦЕСС + FAQ (объединены, без разделителя между ними) -->
+<!-- 8. ПРОЦЕСС + FAQ (объединены) -->
 <section id="process-faq">
   <div class="wrap">
     <!-- Процесс -->
@@ -1270,56 +1161,6 @@
 </footer>
 
 <script>
-  // ====== Интерактивный микс ======
-  const channels = ['electronic', 'orchestral', 'rock', 'ambient'];
-  const colors = {
-    electronic: [88, 169, 160],
-    orchestral: [226, 147, 79],
-    rock: [192, 96, 74],
-    ambient: [138, 131, 160]
-  };
-  const sliders = document.querySelectorAll('input[data-channel]');
-  const summary = document.getElementById('mix-summary');
-  const glow = document.getElementById('heroGlow');
-
-  const labels = {
-    electronic: 'Электроника',
-    orchestral: 'Оркестр',
-    rock: 'Рок',
-    ambient: 'Эмбиент'
-  };
-
-  function update() {
-    const values = {};
-    let total = 0;
-    sliders.forEach(s => {
-      values[s.dataset.channel] = Number(s.value);
-      total += Number(s.value);
-    });
-    if (total === 0) total = 1;
-
-    let r = 0, g = 0, b = 0;
-    channels.forEach(ch => {
-      const weight = values[ch] / total;
-      r += colors[ch][0] * weight;
-      g += colors[ch][1] * weight;
-      b += colors[ch][2] * weight;
-
-      const readout = document.querySelector('[data-readout="' + ch + '"]');
-      if (readout) readout.textContent = values[ch] + '%';
-    });
-    glow.style.setProperty('--mix-color', `rgb(${r|0}, ${g|0}, ${b|0})`);
-    glow.style.background = `radial-gradient(circle, rgb(${r|0}, ${g|0}, ${b|0}) 0%, transparent 68%)`;
-
-    const sorted = channels
-      .map(ch => ({ ch, pct: Math.round((values[ch] / total) * 100) }))
-      .sort((a, b) => b.pct - a.pct);
-    summary.textContent = sorted.map(s => `${labels[s.ch]} ${s.pct}%`).join(' · ');
-  }
-
-  sliders.forEach(s => s.addEventListener('input', update));
-  update();
-
   // ====== ОТПРАВКА ФОРМЫ ЧЕРЕЗ FETCH (без перезагрузки) ======
   const form = document.getElementById('contactForm');
   const successBlock = document.getElementById('form-success');
