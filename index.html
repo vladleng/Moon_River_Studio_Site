@@ -368,66 +368,38 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      min-height: 340px; /* можно увеличить/уменьшить */
-      justify-content: space-between; /* распределяем пространство */
+      min-height: 340px;
+      justify-content: space-between;
     }
-    
     .service-card h3 {
       font-size: 1.05rem;
       margin-bottom: 10px;
       text-align: center;
     }
-    
     .service-card p {
-      flex: 1; /* занимает всё свободное место, прижимая ценник и кнопку вниз */
+      flex: 1;
       text-align: center;
       width: 100%;
       margin-bottom: 16px;
     }
-    
     .service-card .service-price {
       font-weight: 600;
       color: var(--amber);
       font-size: 1.1rem;
       text-align: center;
       width: 100%;
-      margin-top: auto; /* дополнительная страховка */
+      margin-top: auto;
     }
-    
     .service-card .btn {
       align-self: center;
       margin-top: 16px;
     }
-    /* На мобильных – по одной колонке */
     @media (max-width: 760px) {
-    .service-card {
-      flex: 0 0 100%;
-      max-width: 100%;
-      min-width: unset;
-    }
-  }
-    /* ---------- PRICES ---------- */
-    .price-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 18px;
-    }
-    .price-item {
-      background: var(--panel);
-      border: 1px solid var(--panel-line);
-      border-radius: 8px;
-      padding: 20px;
-      text-align: center;
-    }
-    .price-item .price {
-      font-size: 1.6rem;
-      font-weight: 700;
-      color: var(--amber);
-      margin: 8px 0;
-    }
-    .price-item .price-desc {
-      color: var(--text-muted);
-      font-size: 0.82rem;
+      .service-card {
+        flex: 0 0 100%;
+        max-width: 100%;
+        min-width: unset;
+      }
     }
 
     /* ---------- PORTFOLIO ---------- */
@@ -774,60 +746,57 @@
         transition: none !important;
       }
     }
-    /* Фоновое изображение для блока "Оживление ИИ" */
-#ai-recreation {
-  position: relative;
-  background-image: url('ai_stem_arange_06.jpg'); /* замените на нужный файл */
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  /* background-attachment: fixed;  если хотите эффект параллакса — раскомментируйте */
-}
 
-#ai-recreation::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(21, 20, 26, 0.75); /* затемнение, регулируйте прозрачность */
-  z-index: 1;
-}
+    /* ---------- Фоновое изображение для блока "Оживление ИИ" ---------- */
+    #ai-recreation {
+      position: relative;
+      background-image: url('ai_stem_arange_06.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+    #ai-recreation::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(21, 20, 26, 0.75);
+      z-index: 1;
+    }
+    #ai-recreation .wrap {
+      position: relative;
+      z-index: 2;
+    }
+    #ai-recreation .section-head p,
+    #ai-recreation .process-step p,
+    #ai-recreation .process-step .num,
+    #ai-recreation p,
+    #ai-recreation .lede,
+    #ai-recreation .tagline,
+    #ai-recreation .eyebrow {
+      color: #f0ece4 !important;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+    }
+    #ai-recreation .process-step .num {
+      color: var(--teal) !important;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+    }
+    #ai-recreation audio {
+      background: rgba(0,0,0,0.3);
+      border-radius: 8px;
+      padding: 4px 0;
+    }
 
-#ai-recreation .wrap {
-  position: relative;
-  z-index: 2;
-}
-/* Делаем ярче мелкий текст: параграфы, описания, номера, подписи */
-#ai-recreation .section-head p,
-#ai-recreation .process-step p,
-#ai-recreation .process-step .num,
-#ai-recreation p,
-#ai-recreation .lede,
-#ai-recreation .tagline,
-#ai-recreation .eyebrow {
-  color: #f0ece4 !important;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
-}
-/* Возвращаем цифрам их исходный зелёный цвет */
-#ai-recreation .process-step .num {
-  color: var(--teal) !important;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6); /* лёгкая тень для читаемости */
-}
-#ai-recreation audio {
-  background: rgba(0,0,0,0.3);
-  border-radius: 8px;
-  padding: 4px 0;
-}
-    /* Фото-аватары в отзывах */
-.avatar-img {
-  width: 42px;
-  height: 42px;
-  border-radius: 50%;
-  object-fit: cover; /* чтобы фото заполняло круг без искажений */
-  flex-shrink: 0;
-}
+    /* ---------- Фото-аватары в отзывах ---------- */
+    .avatar-img {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
   </style>
 </head>
 <body>
@@ -838,7 +807,6 @@
     <nav class="nav-links">
       <a href="#portfolio">Портфолио</a>
       <a href="#services">Услуги</a>
-      <a href="#prices">Цены</a>
       <a href="#ai-recreation">Оживление ИИ</a>
       <a href="#testimonials">Отзывы</a>
       <a href="#about">О студии</a>
@@ -954,7 +922,6 @@
       <h2>Как мы выводим треки на свет</h2>
       <p>ИИ‑генератор хорошо даёт идею, но не всегда — нужное звучание. Мы разбираем трек на составляющие и пересобираем его так, чтобы не потерять ни одной детали оригинала.</p>
     </div>
-
     <div class="process-list">
       <div class="process-step">
         <span class="num">01</span>
@@ -972,10 +939,8 @@
         <p>Записываем или программируем партии заново, сохраняя структуру и нюансы трека, но убирая характерное «ИИ‑звучание».</p>
       </div>
     </div>
-
     <!-- Сравнение треков: 2 строки по 2 плеера -->
     <div style="margin-top: 40px; display: grid; grid-template-columns: 1fr 1fr; gap: 24px 20px;">
-      <!-- Первый пример -->
       <div>
         <p style="text-align: center; color: var(--text); font-weight: 600; margin-bottom: 6px; text-shadow: 0 2px 8px rgba(0,0,0,0.8);">🎧 ИИ‑версия (трек 1)</p>
         <audio controls style="width: 100%;">
@@ -990,7 +955,6 @@
           Ваш браузер не поддерживает аудио.
         </audio>
       </div>
-      <!-- Второй пример -->
       <div>
         <p style="text-align: center; color: var(--text); font-weight: 600; margin-bottom: 6px; text-shadow: 0 2px 8px rgba(0,0,0,0.8);">🎧 ИИ‑версия (трек 2)</p>
         <audio controls style="width: 100%;">
@@ -1008,57 +972,10 @@
     </div>
   </div>
 </section>
-<hr class="hr">
-
-<!-- 4. УСЛУГИ (5 карточек) -->
-<section id="services">
-  <div class="wrap">
-    <div class="section-head">
-      <div class="eyebrow">Услуги</div>
-      <h2>Пять направлений студии</h2>
-      <p>Мы закрываем полный цикл работы с музыкой — от идеи до финального мастера.</p>
-    </div>
-    <div class="service-grid">
-      <div class="service-card">
-        <h3>Аранжировка авторской музыки</h3>
-        <p>Берём вашу идею, мелодию или демо и доводим до полноценной аранжировки — с инструментами, структурой и динамикой.</p>
-        <div class="service-price">от 15 000 ₽</div>
-        <a class="btn btn-primary" href="#contact">Заказать аранжировку</a>
-      </div>
-      <div class="service-card" style="border-color:var(--teal);">
-        <h3>Оживление ИИ‑музыки</h3>
-        <p>Анализируем сгенерированный трек и пересобираем его на качественных инструментах или вживую — сохраняя нюансы оригинала.</p>
-        <div class="service-price">от 10 000 ₽</div>
-        <a class="btn btn-success" href="#ai-recreation">Подробнее</a>
-      </div>
-      <div class="service-card">
-        <h3>Авторская музыка на заказ</h3>
-        <p>Пишем оригинальную музыку с нуля под конкретную задачу — личный трек, видео, игра или особый случай.</p>
-        <div class="service-price">от 20 000 ₽</div>
-        <a class="btn btn-primary" href="#contact">Написать музыку</a>
-      </div>
-      <div class="service-card" style="border-color:var(--ember);">
-        <h3>Запись и тюнинг вокала</h3>
-        <p>Профессиональная запись вокала, автотюн, выравнивание, гармонии. Работаем с солистами и группами.</p>
-        <div class="service-price">
-          от 5 000 ₽
-        <span style="display: block; font-weight: 400; font-size: 0.8rem; color: var(--text-muted); text-align: center;">(+1000 за каждого доп. человека)</span>
-      </div>
-  <a class="btn btn-primary" href="#contact">Записать вокал</a>
-</div>
-      <div class="service-card" style="border-color:var(--dusk);">
-        <h3>Сведение и мастеринг</h3>
-        <p>Доводим трек до коммерческого качества: баланс, частоты, динамика, громкость по стандартам стримингов.</p>
-        <div class="service-price">от 5 000 ₽</div>
-        <a class="btn btn-primary" href="#contact">Свести трек</a>
-      </div>
-    </div>
-  </div>
-</section>
 
 <hr class="hr">
 
-<!-- 5. ПОРТФОЛИО -->
+<!-- 4. ПОРТФОЛИО -->
 <section id="portfolio">
   <div class="wrap">
     <div class="section-head">
@@ -1146,28 +1063,47 @@
 
 <hr class="hr">
 
-<!-- 6. ПРОЦЕСС -->
-<section id="process">
+<!-- 5. УСЛУГИ (5 карточек) -->
+<section id="services">
   <div class="wrap">
     <div class="section-head">
-      <div class="eyebrow">Процесс</div>
-      <h2>Как трек доходит до финала</h2>
+      <div class="eyebrow">Услуги</div>
+      <h2>Пять направлений студии</h2>
+      <p>Мы закрываем полный цикл работы с музыкой — от идеи до финального мастера.</p>
     </div>
-    <div class="process-list">
-      <div class="process-step">
-        <span class="num">01</span>
-        <h3>Бриф</h3>
-        <p>Обсуждаем задачу: жанр, настроение, референсы, сроки и где будет использоваться музыка.</p>
+    <div class="service-grid">
+      <div class="service-card">
+        <h3>Аранжировка авторской музыки</h3>
+        <p>Берём вашу идею, мелодию или демо и доводим до полноценной аранжировки — с инструментами, структурой и динамикой.</p>
+        <div class="service-price">от 15 000 ₽</div>
+        <a class="btn btn-primary" href="#contact">Заказать аранжировку</a>
       </div>
-      <div class="process-step">
-        <span class="num">02</span>
-        <h3>Демо</h3>
-        <p>Присылаем набросок основной идеи — до того, как двигаться дальше, чтобы синхронизироваться по направлению.</p>
+      <div class="service-card" style="border-color:var(--teal);">
+        <h3>Оживление ИИ‑музыки</h3>
+        <p>Анализируем сгенерированный трек и пересобираем его на качественных инструментах или вживую — сохраняя нюансы оригинала.</p>
+        <div class="service-price">от 10 000 ₽</div>
+        <a class="btn btn-success" href="#ai-recreation">Подробнее</a>
       </div>
-      <div class="process-step">
-        <span class="num">03</span>
-        <h3>Финал</h3>
-        <p>Дорабатываем по правкам и передаём готовый трек в нужном формате.</p>
+      <div class="service-card">
+        <h3>Авторская музыка на заказ</h3>
+        <p>Пишем оригинальную музыку с нуля под конкретную задачу — личный трек, видео, игра или особый случай.</p>
+        <div class="service-price">от 20 000 ₽</div>
+        <a class="btn btn-primary" href="#contact">Написать музыку</a>
+      </div>
+      <div class="service-card" style="border-color:var(--ember);">
+        <h3>Запись и тюнинг вокала</h3>
+        <p>Профессиональная запись вокала, автотюн, выравнивание, гармонии. Работаем с солистами и группами.</p>
+        <div class="service-price">
+          от 5 000 ₽
+          <span style="display: block; font-weight: 400; font-size: 0.8rem; color: var(--text-muted); text-align: center;">(+1000 за каждого доп. человека)</span>
+        </div>
+        <a class="btn btn-primary" href="#contact">Записать вокал</a>
+      </div>
+      <div class="service-card" style="border-color:var(--dusk);">
+        <h3>Сведение и мастеринг</h3>
+        <p>Доводим трек до коммерческого качества: баланс, частоты, динамика, громкость по стандартам стримингов.</p>
+        <div class="service-price">от 5 000 ₽</div>
+        <a class="btn btn-primary" href="#contact">Свести трек</a>
       </div>
     </div>
   </div>
@@ -1175,50 +1111,7 @@
 
 <hr class="hr">
 
-<!-- 7. ЦЕНЫ -->
-<section id="prices">
-  <div class="wrap">
-    <div class="section-head">
-      <div class="eyebrow">Ориентировочные цены</div>
-      <h2>Прозрачный прайс</h2>
-      <p>Окончательная стоимость зависит от объёма работы, но вы уже сейчас можете прикинуть бюджет.</p>
-    </div>
-    <div class="price-grid">
-      <div class="price-item">
-        <h3>Аранжировка</h3>
-        <div class="price">15 000 ₽</div>
-        <div class="price-desc">под ключ, с правками</div>
-      </div>
-      <div class="price-item">
-        <h3>Оживление ИИ</h3>
-        <div class="price">10 000 ₽</div>
-        <div class="price-desc">пересборка + микс</div>
-      </div>
-      <div class="price-item">
-        <h3>Авторский трек</h3>
-        <div class="price">20 000 ₽</div>
-        <div class="price-desc">уникальная музыка с нуля</div>
-      </div>
-      <div class="price-item">
-        <h3>Вокал (запись + тюнинг)</h3>
-        <div class="price">от 5 000 ₽</div>
-        <div class="price-desc">+1000 за каждого доп. человека</div>
-      </div>
-      <div class="price-item">
-        <h3>Сведение / Мастеринг</h3>
-        <div class="price">от 5 000 ₽</div>
-        <div class="price-desc">за готовый микс</div>
-      </div>
-    </div>
-    <p style="color:var(--text-muted); margin-top:20px; text-align:center; font-size:0.9rem;">
-      * Все цены указаны за стандартный трек длительностью до 4 минут. Для точного расчёта свяжитесь с нами.
-    </p>
-  </div>
-</section>
-
-<hr class="hr">
-
-<!-- 8. О СТУДИИ -->
+<!-- 6. О СТУДИИ -->
 <section id="about">
   <div class="wrap about-inner">
     <div>
@@ -1247,7 +1140,7 @@
 
 <hr class="hr">
 
-<!-- 9. ОТЗЫВЫ -->
+<!-- 7. ОТЗЫВЫ -->
 <section id="testimonials">
   <div class="wrap">
     <div class="section-head">
@@ -1292,37 +1185,63 @@
 
 <hr class="hr">
 
-<!-- 10. FAQ -->
-<section id="faq">
+<!-- 8. ПРОЦЕСС + FAQ (объединены, без разделителя между ними) -->
+<section id="process-faq">
   <div class="wrap">
+    <!-- Процесс -->
     <div class="section-head">
-      <div class="eyebrow">Вопросы и ответы</div>
-      <h2>Часто задаваемые вопросы</h2>
+      <div class="eyebrow">Процесс</div>
+      <h2>Как трек доходит до финала</h2>
     </div>
-    <div class="faq-list">
-      <details class="faq-item">
-        <summary>Какие форматы вы принимаете для работы?</summary>
-        <p>Мы работаем с любыми аудиоформатами (WAV, MP3, AIFF) и MIDI‑файлами. Если у вас есть только идея — пришлите голосовую заметку или описание, мы поможем.</p>
-      </details>
-      <details class="faq-item">
-        <summary>Сколько времени занимает оживление ИИ‑трека?</summary>
-        <p>Обычно от 3 до 7 дней в зависимости от сложности. Срочные заказы (до 48 часов) обсуждаются отдельно.</p>
-      </details>
-      <details class="faq-item">
-        <summary>Можно ли вносить правки после получения финальной версии?</summary>
-        <p>Да, мы предусматриваем до 2‑х итераций правок в рамках стоимости. Дополнительные правки — по договорённости.</p>
-      </details>
-      <details class="faq-item">
-        <summary>Гарантируете ли вы, что трек пройдёт модерацию стримингов?</summary>
-        <p>Да, мы делаем микс и мастеринг по стандартам площадок (‑14 LUFS, правильный True Peak). Если проблема возникнет — доработаем бесплатно.</p>
-      </details>
+    <div class="process-list">
+      <div class="process-step">
+        <span class="num">01</span>
+        <h3>Бриф</h3>
+        <p>Обсуждаем задачу: жанр, настроение, референсы, сроки и где будет использоваться музыка.</p>
+      </div>
+      <div class="process-step">
+        <span class="num">02</span>
+        <h3>Демо</h3>
+        <p>Присылаем набросок основной идеи — до того, как двигаться дальше, чтобы синхронизироваться по направлению.</p>
+      </div>
+      <div class="process-step">
+        <span class="num">03</span>
+        <h3>Финал</h3>
+        <p>Дорабатываем по правкам и передаём готовый трек в нужном формате.</p>
+      </div>
+    </div>
+
+    <!-- FAQ -->
+    <div style="margin-top: 60px;">
+      <div class="section-head">
+        <div class="eyebrow">Вопросы и ответы</div>
+        <h2>Часто задаваемые вопросы</h2>
+      </div>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary>Какие форматы вы принимаете для работы?</summary>
+          <p>Мы работаем с любыми аудиоформатами (WAV, MP3, AIFF) и MIDI‑файлами. Если у вас есть только идея — пришлите голосовую заметку или описание, мы поможем.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Сколько времени занимает оживление ИИ‑трека?</summary>
+          <p>Обычно от 3 до 7 дней в зависимости от сложности. Срочные заказы (до 48 часов) обсуждаются отдельно.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Можно ли вносить правки после получения финальной версии?</summary>
+          <p>Да, мы предусматриваем до 2‑х итераций правок в рамках стоимости. Дополнительные правки — по договорённости.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Гарантируете ли вы, что трек пройдёт модерацию стримингов?</summary>
+          <p>Да, мы делаем микс и мастеринг по стандартам площадок (‑14 LUFS, правильный True Peak). Если проблема возникнет — доработаем бесплатно.</p>
+        </details>
+      </div>
     </div>
   </div>
 </section>
 
 <hr class="hr">
 
-<!-- 11. КОНТАКТЫ -->
+<!-- 9. КОНТАКТЫ -->
 <section id="contact">
   <div class="wrap contact-inner">
     <div>
