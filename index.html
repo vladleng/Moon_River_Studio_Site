@@ -388,9 +388,12 @@
     /* ---------- ABOUT ---------- */
     .about-inner {
       display: grid;
-      grid-template-columns: .9fr 1fr;
+      grid-template-columns: 1fr 1fr;
       gap: 48px;
       align-items: start;
+    }
+      .about-photo {
+        margin-left: -30px;   /* подбери -20...-40px */
     }
     @media (max-width: 760px) {
       .about-inner {
